@@ -9,7 +9,11 @@ export default function CustomBoxes({ data = "", type = "" }) {
           return (
             <div
               key={item.id}
-              className={`flex flex-col items-left ${item.color} p-6 rounded-[16px] shadow-md`}
+              className={`flex flex-col items-left ${item.color} bg-[url('/image/card_bg.svg')] bg-cover bg-no-repeat  p-6 rounded-[16px] shadow-md`}
+              style={{
+                backgroundSize: "50%",
+                backgroundPosition: "100% 203%",
+              }}
             >
               <div className="icon flex items-center justify-start container mb-4">
                 <img src={item.image} alt="icon" className="mr-[10px]" />

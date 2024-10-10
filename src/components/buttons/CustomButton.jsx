@@ -9,7 +9,7 @@ export default function CustomButton({
   return (
     <button
       type={type}
-      className={`bg-[#0E3281] text-[#F9FBFC]  font-normal ${style}`} // Add dynamic styles
+      className={`  font-normal ${style}`} // Add dynamic styles
       onClick={onClick}
     >
       {text}

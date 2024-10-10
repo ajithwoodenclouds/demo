@@ -19,13 +19,13 @@ const YearSelector = ({
     <div className="relative z-10 ">
       <button
         onClick={() => setOpen(!open)}
-        className={`flex items-center text-[16px] border rounded-md px-4 ${color} py-2 `}
+        className={`flex items-center justify-between text-[16px] border  w-[140px] rounded-md px-4 ${color} py-2 `}
       >
         <span>{selectedYear}</span>
         {open ? (
-          <FiChevronUp className="ml-2 text-[21px]" />
+          <FiChevronUp className="text-[21px]" />
         ) : (
-          <FiChevronDown className="ml-2 text-[21px]" />
+          <FiChevronDown className=" text-[21px]" />
         )}
       </button>
       {open && (

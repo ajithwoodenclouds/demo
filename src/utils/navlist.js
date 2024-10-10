@@ -4,7 +4,7 @@ export const menuItems = [
     title: "Home",
     icon: "image/home_icon.svg", // Dark mode icon
     light_icon: "image/home_icon_light.svg", // Light mode icon
-    path: "/home",
+    path: "/",
   },
   {
     id: 2,
@@ -18,20 +18,20 @@ export const menuItems = [
     title: "Accounts",
     icon: "/image/account_icon.svg",
     light_icon: "image/account_icon_light.svg",
-    path: "/accounts",
+    // path: "/accounts",
   },
   {
     id: 4,
     title: "Users",
     icon: "/image/users_icon.svg",
     light_icon: "/image/users_icon_light.svg",
-    path: "/users",
+    // path: "/users",
   },
   {
     id: 5,
     title: "Subscription",
     icon: "/image/subscription_icon.svg",
     light_icon: "/image/subscription_icon_light.svg",
-    path: "/subscription",
+    // path: "/subscription",
   },
 ];

@@ -4,6 +4,7 @@ import Header from "../../components/general/Header";
 import CustomBoxes from "../../components/general/CustomBoxes";
 import { data } from "../../utils/home_card_data";
 import GraphSection from "../../components/general/GraphSection";
+import FranchiseOrderSection from "../../components/general/FranchiseOrderSection";
 
 export default function Home() {
   return (
@@ -11,9 +12,10 @@ export default function Home() {
       <div className="flex w-full justify-between">
         <Sidebar />
         <div className="w-full">
-          <Header />
+          <Header current="Home" />
           <CustomBoxes data={data} />
           <GraphSection />
+          <FranchiseOrderSection />
         </div>
       </div>
     </div>

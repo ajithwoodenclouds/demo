@@ -102,7 +102,7 @@ const Login = () => {
 
             <CustomButton
               text="Continue"
-              style="w-full px-4 py-3 text-[16px] rounded-[16px] focus:outline-none"
+              style="w-full px-4 py-3 bg-[#0E3281] text-[#F9FBFC] text-[16px] rounded-[16px] focus:outline-none"
               onClick={hnadleSubmit}
             />
           </form>

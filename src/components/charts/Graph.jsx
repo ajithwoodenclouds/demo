@@ -8,6 +8,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+// Sample data
 const data = [
   { name: "Jan", value: 8000 },
   { name: "Feb", value: 11598 },
@@ -17,6 +18,15 @@ const data = [
   { name: "Jun", value: 23000 },
 ];
 
+// Custom Tooltip to display only the value
+const CustomTooltip = ({ active, payload }) => {
+  if (active && payload && payload.length) {
+    return <span>{`${payload[0].value}`}</span>;
+  }
+  return null;
+};
+
+// Graph Component
 const Graph = () => {
   return (
     <div className="flex flex-col items-center w-full">
@@ -25,6 +35,7 @@ const Graph = () => {
           data={data}
           margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
         >
+          {/* Shadow effect definition */}
           <defs>
             <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
               <feDropShadow
@@ -36,6 +47,8 @@ const Graph = () => {
               />
             </filter>
           </defs>
+
+          {/* Axes */}
           <XAxis dataKey="name" axisLine={false} tickLine={false} />
           <YAxis
             axisLine={false}
@@ -44,7 +57,14 @@ const Graph = () => {
             ticks={[10000, 20000, 30000]} // Explicitly define the tick values
             tickFormatter={(value) => `${value / 1000}k`} // Format ticks as 'k'
           />
-          <Tooltip />
+
+          {/* Tooltip with CustomTooltip */}
+          <Tooltip
+            formatter={(value) => `${value}`} // Just return the value
+            content={<CustomTooltip />} // Use the custom tooltip
+          />
+
+          {/* Line with shadow and active dot */}
           <Line
             type="monotone"
             dataKey="value"

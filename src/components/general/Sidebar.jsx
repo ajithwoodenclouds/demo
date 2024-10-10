@@ -1,8 +1,9 @@
 import React from "react";
 import { menuItems } from "../../utils/navlist";
-// import { HomeIcon } from "@heroicons/react/outline"; // Install heroicons for icons
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
+  const navigate = useNavigate();
   return (
     <div className="h-[100vh] w-64 bg-[#FFFFFF]  flex flex-col px-4   border-[rgba(14, 50, 129, 0.1)] border-[1px]">
       {/* Header Section */}
@@ -20,6 +21,10 @@ const Sidebar = () => {
             return (
               <li
                 key={item.id}
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate(item.path);
+                }}
                 className="flex items-center px-[16px] rounded-[8px] py-[8px] hover:bg-gray-100 cursor-pointer"
               >
                 {/* <HomeIcon className="w-6 h-6 text-gray-600" /> */}

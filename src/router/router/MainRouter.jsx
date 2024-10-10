@@ -38,10 +38,7 @@ export default function MainRouter() {
           />
         ) : (
           <>
-            {/* Public routes for unauthenticated users */}
             <Route path="/login" element={<Login />} />
-            {/* Redirect all other routes to login if not authenticated */}
-            <Route path="/*" element={<Navigate to="/login" replace />} />
           </>
         )}
       </Routes>
