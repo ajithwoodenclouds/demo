@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import DateSelector from "../input/DateSelector";
-import TableComponent from "../Table/TableComponent";
-import { columns, data, colors } from "../../utils/formUsers";
-import PaginationComponent from "../pagination/PaginationComponent";
+import DateSelector from "../../filtter_box/DateSelector";
+import TableComponent from "../../Table/TableComponent";
+import { data, colors, columns } from "../../../utils/formUsers";
+import PaginationComponent from "../../pagination/PaginationComponent";
+import Table from "../../Table/Table";
+import SubBox from "../../filtter_box/SubBox";
 
 export default function FranchiseOrderSection() {
   const [selectedDate, setSelectedDate] = useState("Today");
@@ -29,11 +31,18 @@ export default function FranchiseOrderSection() {
           onSelectDate={setSelectedDate}
         />
       </div>
-      <TableComponent
-        columns={columns}
+      <Table
         data={currentUsers}
-        type="FranchiseOrderSection"
+        columns={columns}
         colors={colors}
+        onRowClick={(item, rowIndex, { openModal }) => {
+          openModal(
+            `Details for ${item.Sno}`,
+            `${item["Franchisee Name"]}, Total Orders: ${item["Total Orders"]}`
+          );
+        }}
+        type="Admin-FranchiseOrderSection"
+        modalComponent={SubBox}
       />
       <div className="flex font-interRegular text-[#7B7B75] p-4 text-[12px] justify-between items-center">
         <h4>

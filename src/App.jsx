@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import Login from "./screens/auth/Login";
+import Login from "./admin-screens/auth/Login";
 import MainRouter from "./router/router/MainRouter";
 
 function App() {

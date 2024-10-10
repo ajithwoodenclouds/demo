@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Login from "../../screens/auth/Login";
+import Login from "../../admin-screens/auth/Login";
 import { useDispatch, useSelector } from "react-redux";
 import {
   BrowserRouter as Router,

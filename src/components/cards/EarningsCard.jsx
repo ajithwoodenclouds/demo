@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa"; // for dropdown icon
-import YearSelector from "../input/YearSelector";
+import YearSelector from "../filtter_box/YearSelector";
 import { useNavigate } from "react-router-dom";
 
 const EarningsCard = () => {

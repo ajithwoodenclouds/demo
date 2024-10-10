@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import SubBox from "../box/SubBox";
+import SubBox from "../filtter_box/SubBox";
 
-const TableComponent = ({ columns, data, type = "default", colors }) => {
+const TableComponent = ({ data, type = "default", colors }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState("");
   const [modalTitle, setModalTitle] = useState("");
@@ -9,9 +9,9 @@ const TableComponent = ({ columns, data, type = "default", colors }) => {
   const modalRef = useRef(null); // Reference for the modal box
 
   const handleActionClick = (item, rowIndex) => {
-    setModalTitle(item.franchisee_iD); // Set the title to the franchisee ID
+    setModalTitle(item.Sno); // Set the title to the Sno
     setModalContent(
-      `Details for ${item.franchisee_iD}: ${item.company_Name}, located at ${item.location}`
+      `Details for ${item.Sno}: ${item["Franchisee Name"]}, Total Orders: ${item["Total Orders"]}`
     );
     setModalRowIndex(rowIndex); // Set the row index for displaying the modal
     setIsModalOpen(true);
@@ -47,78 +47,73 @@ const TableComponent = ({ columns, data, type = "default", colors }) => {
       <table className="min-w-full bg-white border border-[#F5F7FA] rounded-lg overflow-hidden">
         <thead>
           <tr className="text-[#6A7683] border-b border-[#F5F7FA]">
-            {columns.map((column, index) => (
-              <th
-                key={index}
-                className={`py-[22px] px-[16px] text-[#6A7683] font-[400] text-[15px] ${
-                  type === "FranchiseOrderSection"
-                    ? "border-l border-[#F5F7FA] border-r"
-                    : "border-0"
-                }`}
-                style={{ color: colors[index % colors.length] }}
-              >
-                {column}
-              </th>
-            ))}
+            {data.length > 0 &&
+              Object.keys(data[0]).map((key, index) => (
+                <th
+                  key={index}
+                  className={`py-[22px] px-[16px] text-[#6A7683] font-[400] text-[15px] ${
+                    type === "FranchiseOrderSection"
+                      ? "border-l border-[#F5F7FA] border-r"
+                      : "border-0"
+                  }`}
+                  style={{ color: colors[index % colors.length] }}
+                >
+                  {key}
+                </th>
+              ))}
           </tr>
         </thead>
         <tbody>
-          {data.map(
-            (item, rowIndex) => (
-              console.log(data, rowIndex),
-              (
-                <>
-                  <tr
-                    key={rowIndex}
-                    className={`text-center hover:bg-[#F5F7FA] border-b border-[#F5F7FA]`}
+          {data.map((item, rowIndex) => (
+            <React.Fragment key={rowIndex}>
+              <tr
+                className={`text-center hover:bg-[#F5F7FA] border-b border-[#F5F7FA]`}
+              >
+                {Object.keys(item).map((key, colIndex) => (
+                  <td
+                    key={colIndex}
+                    className={`py-[22px] ${
+                      type === "Admin-FranchiseOrderSection"
+                        ? "border-l border-[#F5F7FA] border-r"
+                        : "border-0"
+                    } px-[16px]`}
+                    style={{ color: colors[colIndex % colors.length] }}
+                    onClick={
+                      colIndex === Object.keys(item).length - 1 &&
+                      type === "franchisee"
+                        ? () => handleActionClick(item, rowIndex)
+                        : undefined
+                    }
                   >
-                    {Object.values(item).map((value, colIndex) => (
-                      <td
-                        key={colIndex}
-                        className={`py-[22px] ${
-                          type === "FranchiseOrderSection"
-                            ? "border-l border-[#F5F7FA] border-r"
-                            : "border-0"
-                        } px-[16px]`}
-                        style={{ color: colors[colIndex % colors.length] }}
-                        onClick={
-                          colIndex === Object.values(item).length - 1 &&
-                          type === "franchisee"
-                            ? () => handleActionClick(item, rowIndex)
-                            : undefined
-                        }
-                      >
-                        {isImage(value) ? (
-                          <img
-                            src={value}
-                            alt={`Image at ${value}`}
-                            className="w-10 h-10 object-cover"
-                          />
-                        ) : (
-                          value
-                        )}
-                      </td>
-                    ))}
-                  </tr>
-                  {/* Render SubBox inside the row when clicked */}
-                  {isModalOpen && modalRowIndex === rowIndex && (
-                    <tr>
-                      <td colSpan={columns.length} className="px-4 py-2">
-                        <div ref={modalRef}>
-                          <SubBox
-                            isOpen={isModalOpen}
-                            onClose={() => setIsModalOpen(false)}
-                            content={modalContent}
-                            title={modalTitle}
-                          />
-                        </div>
-                      </td>
-                    </tr>
-                  )}
-                </>
-              )
-            )
-          )}
+                    {isImage(item[key]) ? (
+                      <img
+                        src={item[key]}
+                        alt={`Image at ${item[key]}`}
+                        className="w-10 h-10 object-cover"
+                      />
+                    ) : (
+                      item[key]
+                    )}
+                  </td>
+                ))}
+              </tr>
+              {/* Render SubBox inside the row when clicked */}
+              {isModalOpen && modalRowIndex === rowIndex && (
+                <tr>
+                  <td colSpan={Object.keys(item).length} className="px-4 py-2">
+                    <div ref={modalRef}>
+                      <SubBox
+                        isOpen={isModalOpen}
+                        onClose={() => setIsModalOpen(false)}
+                        content={modalContent}
+                        title={modalTitle}
+                      />
+                    </div>
+                  </td>
+                </tr>
+              )}
+            </React.Fragment>
+          ))}
         </tbody>
       </table>
     </div>

@@ -2,7 +2,7 @@ export const menuItems = [
   {
     id: 1,
     title: "Home",
-    icon: "image/home_icon.svg", // Dark mode icon
+    icon: "/image/home_icon.svg",
     light_icon: "image/home_icon_light.svg", // Light mode icon
     path: "/",
   },

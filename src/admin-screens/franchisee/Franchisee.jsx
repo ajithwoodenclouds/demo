@@ -6,13 +6,15 @@ import TableComponent from "../../components/Table/TableComponent";
 import { columns, data, colors } from "../../utils/franchisee_list";
 import PaginationComponent from "../../components/pagination/PaginationComponent";
 import CreateFranchisee from "../../components/form/CreateFranchisee";
+import Table from "../../components/Table/Table";
+import SubBox from "../../components/filtter_box/SubBox";
+import { Outlet } from "react-router-dom";
 
-export default function Home() {
+export default function Franchisee() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 5;
-  console.log(isModalOpen, "hh");
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -32,12 +34,24 @@ export default function Home() {
         <Sidebar />
         <div className="w-full">
           <Header current="Frachisees" />
-          <SectionMiniHeader openModal={setIsModalOpen} />
-          <TableComponent
+          <SectionMiniHeader
+            title="Franchisee list"
+            type="Admin-Franchisee-List"
+            handlClick={setIsModalOpen}
+          />
+          <Table
             data={currentUsers}
             columns={columns}
             colors={colors}
-            type="franchisee"
+            onRowClick={(item, rowIndex, { openModal }) => {
+              openModal(
+                `Details for ${item.Sno}`,
+                `${item["Franchisee Name"]}, Total Orders: ${item["Total Orders"]}`
+              );
+            }}
+            type="Admin-Franchisee"
+            modalComponent={SubBox}
+            path="/franchisee"
           />
 
           <div className="flex font-interRegular text-[#7B7B75] p-4 text-[12px] justify-between items-center">
@@ -52,6 +66,7 @@ export default function Home() {
           {isModalOpen && <CreateFranchisee closeModal={closeModal} />}
         </div>
       </div>
+      <Outlet />
     </div>
   );
 }

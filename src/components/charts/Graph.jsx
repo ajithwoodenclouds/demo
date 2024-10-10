@@ -11,10 +11,10 @@ import {
 // Sample data
 const data = [
   { name: "Jan", value: 8000 },
-  { name: "Feb", value: 11598 },
-  { name: "Mar", value: 9000 },
+  { name: "Feb", value: 22598 },
+  { name: "Mar", value: 5000 },
   { name: "Apr", value: 15000 },
-  { name: "May", value: 25000 },
+  { name: "May", value: 5000 },
   { name: "Jun", value: 23000 },
 ];
 

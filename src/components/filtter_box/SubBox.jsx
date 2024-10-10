@@ -1,5 +1,4 @@
 import React from "react";
-import { FiEdit, FiTrash } from "react-icons/fi";
 
 export default function SubBox({ isOpen, onClose, content, title }) {
   if (!isOpen) return null;

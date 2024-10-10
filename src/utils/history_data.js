@@ -1,9 +1,9 @@
 export const columns = [
-  "Sno",
-  "Franchisee Name",
-  "Transaction id",
-  "Date",
-  "Amount",
+  { header: "Sno", accessor: "sno" },
+  { header: "Franchisee Name", accessor: "franchiseeName" },
+  { header: "Transaction id", accessor: "transaction_id" },
+  { header: "Date", accessor: "date" },
+  { header: "Amount", accessor: "amount" },
 ];
 
 export const data = [

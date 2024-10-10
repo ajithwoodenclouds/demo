@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import Header from "../general/Header";
-import Sidebar from "../general/Sidebar";
+import Header from "../../general/Header";
+import Sidebar from "../../general/Sidebar";
 import { FiFilter } from "react-icons/fi";
-import TableComponent from "../Table/TableComponent";
-import { columns, data, colors } from "../../utils/history_data";
-import PaginationComponent from "../pagination/PaginationComponent";
+import TableComponent from "../../Table/TableComponent";
+import { columns, data, colors } from "../../../utils/history_data";
+import PaginationComponent from "../../pagination/PaginationComponent";
+import Table from "../../Table/Table";
 
 export default function TransactionHistorySection() {
   const [currentPage, setCurrentPage] = useState(0);
@@ -43,10 +44,11 @@ export default function TransactionHistorySection() {
               </h4>
             </div>
           </div>
-          <TableComponent
+          <Table
             data={currentUsers}
             columns={columns}
             colors={colors}
+            type="Admin-TransAction-History"
           />
           <div className="flex font-interRegular text-[#7B7B75] p-4 text-[12px] justify-between items-center">
             <h4>
