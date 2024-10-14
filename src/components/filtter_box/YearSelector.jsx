@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  FiChevronDown,
-  FiChevronUp,
-  FiCheckCircle,
-  FiCircle,
-} from "react-icons/fi";
+import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
 const YearSelector = ({
   selectedYear,

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Header from "../../general/Header";
 import Sidebar from "../../general/Sidebar";
 import { FiFilter } from "react-icons/fi";
-import TableComponent from "../../Table/TableComponent";
 import { columns, data, colors } from "../../../utils/history_data";
 import PaginationComponent from "../../pagination/PaginationComponent";
 import Table from "../../Table/Table";
@@ -48,6 +47,7 @@ export default function TransactionHistorySection() {
             data={currentUsers}
             columns={columns}
             colors={colors}
+            link={false}
             type="Admin-TransAction-History"
           />
           <div className="flex font-interRegular text-[#7B7B75] p-4 text-[12px] justify-between items-center">

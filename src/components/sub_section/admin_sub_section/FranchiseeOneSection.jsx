@@ -4,9 +4,9 @@ import Sidebar from "../../general/Sidebar";
 import SectionMiniHeader from "../../general/SectionMiniHeader";
 import BusinessCard from "../../general/BusinessCard";
 import CustomBoxes from "../../cards/CustomBoxes";
-import { data } from "../../../utils/home_card_data";
-import Graph from "../../charts/Graph";
+import { franchiseeOne_admin_data } from "../../../utils/home_card_data";
 import GraphSection from "./GraphSection";
+import PharmacyWiseOrderssection from "./PharmacyWiseOrderssection";
 
 export default function FranchiseeOneSection() {
   return (
@@ -14,14 +14,15 @@ export default function FranchiseeOneSection() {
       <div className="flex w-full justify-between">
         <Sidebar />
         <div className="w-full">
-          <Header current="Home" />
+          <Header current="Franchisee One" pervious="Franchisees /" />
           <SectionMiniHeader
             title="Franchisee one"
             type="Admin-Franchisee-One"
           />
-          <BusinessCard />
-          <CustomBoxes data={data} />
+          <BusinessCard title="Franchisee one" />
+          <CustomBoxes data={franchiseeOne_admin_data} type="franchisee_one" />
           <GraphSection type="FranchiseeOneSection" />
+          <PharmacyWiseOrderssection />
         </div>
       </div>
     </div>

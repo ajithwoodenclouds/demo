@@ -2,6 +2,7 @@
 import React from "react";
 import CreateActions from "./CreateActions";
 import UpdateAction from "./UpdateAction";
+import FilterActions from "./FilterAction";
 
 const SectionMiniHeader = ({ handlClick, type = "", title = "" }) => {
   return (
@@ -14,6 +15,7 @@ const SectionMiniHeader = ({ handlClick, type = "", title = "" }) => {
           <CreateActions openModal={handlClick} />
         )}
         {type === "Admin-Franchisee-One" && <UpdateAction />}
+        {type === "Admin-Pharmacies_List" && <FilterActions />}
       </div>
     </div>
   );

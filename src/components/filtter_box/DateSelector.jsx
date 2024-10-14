@@ -42,7 +42,7 @@ const DateSelector = ({
                   setOpen(false);
                 }
               }}
-              className="flex items-center cursor-pointer px-4 py-2 text-[#717578]"
+              className="flex items-center cursor-pointer  py-2 text-[#717578]"
             >
               <img
                 src={
@@ -59,7 +59,7 @@ const DateSelector = ({
 
           <div className="flex items-center gap-1">
             <input
-              type="text"
+              type="date"
               name="startDate"
               value={customDate.startDate}
               onChange={handleCustomDateChange}
@@ -68,7 +68,7 @@ const DateSelector = ({
             />
             <span className="text-[#585858] font-[400] text-[14px]">to</span>
             <input
-              type="text"
+              type="date"
               name="endDate"
               value={customDate.endDate}
               onChange={handleCustomDateChange}

@@ -1,9 +1,17 @@
 export const columns = [
-  { header: "Franchisee ID", accessor: "franchisee_iD" },
-  { header: "Franchisee Name", accessor: "franchiseeName" },
-  { header: "Company Name", accessor: "company_Name" },
-  { header: "Number of Pharmacies", accessor: "no_of_pharmacies" },
-  { header: "Location", accessor: "location" },
+  { header: "Franchisee ID", accessor: "franchisee_iD", id: "franchisee_iD" },
+  {
+    header: "Franchisee Name",
+    accessor: "franchiseeName",
+    id: "franchisee_iD",
+  },
+  { header: "Company Name", accessor: "company_Name", id: "franchisee_iD" },
+  {
+    header: "Number of Pharmacies",
+    accessor: "no_of_pharmacies",
+    id: "franchisee_iD",
+  },
+  { header: "Location", accessor: "location", id: "franchisee_iD" },
 ];
 
 export const data = [

@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import DateSelector from "../../filtter_box/DateSelector";
-import TableComponent from "../../Table/TableComponent";
-import { data, colors, columns } from "../../../utils/formUsers";
+import { processedData, colors, columns } from "../../../utils/formUsers";
 import PaginationComponent from "../../pagination/PaginationComponent";
-import Table from "../../Table/Table";
-import SubBox from "../../filtter_box/SubBox";
+import DoubleDataTable from "../../Table/DoubleDataTable";
 
 export default function FranchiseOrderSection() {
   const [selectedDate, setSelectedDate] = useState("Today");
@@ -12,7 +10,7 @@ export default function FranchiseOrderSection() {
   const itemsPerPage = 5;
 
   // Calculate the total number of pages
-  const totalPages = Math.ceil(data.length / itemsPerPage);
+  const totalPages = Math.ceil(processedData.length / itemsPerPage);
 
   const handlePageClick = (data) => {
     setCurrentPage(data.selected);
@@ -20,7 +18,10 @@ export default function FranchiseOrderSection() {
 
   // Get the current items to display
   const startIndex = currentPage * itemsPerPage;
-  const currentUsers = data.slice(startIndex, startIndex + itemsPerPage);
+  const currentUsers = processedData.slice(
+    startIndex,
+    startIndex + itemsPerPage
+  );
 
   return (
     <div className="p-4">
@@ -31,22 +32,17 @@ export default function FranchiseOrderSection() {
           onSelectDate={setSelectedDate}
         />
       </div>
-      <Table
+      <DoubleDataTable
         data={currentUsers}
         columns={columns}
         colors={colors}
-        onRowClick={(item, rowIndex, { openModal }) => {
-          openModal(
-            `Details for ${item.Sno}`,
-            `${item["Franchisee Name"]}, Total Orders: ${item["Total Orders"]}`
-          );
-        }}
+        link={false}
         type="Admin-FranchiseOrderSection"
-        modalComponent={SubBox}
       />
       <div className="flex font-interRegular text-[#7B7B75] p-4 text-[12px] justify-between items-center">
         <h4>
-          Showing {currentPage + 1} to {totalPages} of {data.length} data
+          Showing {currentPage + 1} to {totalPages} of {processedData.length}
+          data
         </h4>
         <PaginationComponent
           totalPages={totalPages}

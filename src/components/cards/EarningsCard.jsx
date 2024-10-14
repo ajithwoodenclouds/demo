@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { FaChevronDown } from "react-icons/fa"; // for dropdown icon
 import YearSelector from "../filtter_box/YearSelector";
 import { useNavigate } from "react-router-dom";
 
@@ -7,17 +6,15 @@ const EarningsCard = () => {
   const [selectedPeriod, setSelectedPeriod] = useState("This year");
   const navigate = useNavigate();
 
-  const periods = ["Last 7 days", "Last 30 days", "This year", "Total"];
-
   return (
     <div
-      className="bg-custom-gradient flex flex-col justify-between text-white w-[370px] bg-cover rounded-lg p-6 shadow-lg relative h-full"
+      className="bg-custom-gradient flex flex-col justify-between text-white w-[370px] rounded-lg p-6 shadow-lg relative h-full"
       style={{
         backgroundImage:
-          "url('/image/card_bg.svg'), linear-gradient(192.82deg, #424953 5.95%, #1C1C1C 94.05%)", // Replace with your gradient colors
-        backgroundSize: "100%",
-        backgroundPosition: "100% -203%",
-        backgroundRepeat: "no-repeat",
+          "url('/image/card_bg.svg'), linear-gradient(192.82deg, #424953 5.95%, #1C1C1C 94.05%)",
+        backgroundSize: "80%, cover", // Use cover for both layers or adjust accordingly
+        backgroundPosition: "217% -86%, center", // Set positions for each background
+        backgroundRepeat: "no-repeat, no-repeat", // Prevent repetition for both layers
       }}
     >
       <div className="flex justify-end items-center">

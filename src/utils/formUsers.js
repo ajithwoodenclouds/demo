@@ -1,7 +1,8 @@
 export const data = [
   {
     Sno: "01",
-    "Franchisee Name": "MediFast Delivery",
+    franchisee_name: "MediFast Delivery",
+    franchisee_iD: 121433422,
     "Total Orders": 156,
     Delivered: 142,
     Attempted: 23,
@@ -10,7 +11,8 @@ export const data = [
   },
   {
     Sno: "02",
-    "Franchisee Name": "QuickMedic",
+    franchisee_name: "QuickMedic",
+    franchisee_iD: 121433422,
     "Total Orders": 180,
     Delivered: 160,
     Attempted: 18,
@@ -19,7 +21,8 @@ export const data = [
   },
   {
     Sno: "03",
-    "Franchisee Name": "QuickMedic",
+    franchisee_name: "QuickMedic",
+    franchisee_iD: 121433422,
     "Total Orders": 200,
     Delivered: 180,
     Attempted: 20,
@@ -28,7 +31,8 @@ export const data = [
   },
   {
     Sno: "04",
-    "Franchisee Name": "HealthCourier",
+    franchisee_name: "HealthCourier",
+    franchisee_iD: 121433422,
     "Total Orders": 220,
     Delivered: 200,
     Attempted: 25,
@@ -37,7 +41,8 @@ export const data = [
   },
   {
     Sno: "05",
-    "Franchisee Name": "MediExpress",
+    franchisee_name: "MediExpress",
+    franchisee_iD: 121433422,
     "Total Orders": 240,
     Delivered: 220,
     Attempted: 30,
@@ -46,7 +51,8 @@ export const data = [
   },
   {
     Sno: "06",
-    "Franchisee Name": "PharmaSwift",
+    franchisee_name: "PharmaSwift",
+    franchisee_iD: 121433422,
     "Total Orders": 260,
     Delivered: 240,
     Attempted: 35,
@@ -55,7 +61,8 @@ export const data = [
   },
   {
     Sno: "07",
-    "Franchisee Name": "MediFast Delivery",
+    franchisee_name: "MediFast Delivery",
+    franchisee_iD: 121433422,
     "Total Orders": 280,
     Delivered: 260,
     Attempted: 40,
@@ -64,7 +71,8 @@ export const data = [
   },
   {
     Sno: "08",
-    "Franchisee Name": "QuickMedic",
+    franchisee_name: "QuickMedic",
+    franchisee_iD: 121433422,
     "Total Orders": 300,
     Delivered: 280,
     Attempted: 45,
@@ -73,9 +81,14 @@ export const data = [
   },
 ];
 
+export const processedData = data.map((item) => ({
+  ...item,
+  FranchiseeDetails: [item.franchisee_name, item.franchisee_iD],
+}));
+
 export const columns = [
   { header: "Sno", accessor: "Sno" },
-  { header: "Franchisee Name", accessor: "Franchisee Name" },
+  { header: "Franchisee name", accessor: "FranchiseeDetails" },
   { header: "Total Orders", accessor: "Total Orders" },
   { header: "Delivered", accessor: "Delivered" },
   { header: "Attempted", accessor: "Attempted" },

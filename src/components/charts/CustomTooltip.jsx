@@ -4,5 +4,3 @@ export const CustomTooltip = ({ active, payload }) => {
   }
   return null;
 };
-
-// Usage

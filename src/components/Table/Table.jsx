@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import SubBox from "../filtter_box/SubBox";
-import { replace, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Table = ({
   data = [],
@@ -11,6 +11,7 @@ const Table = ({
   renderSubComponent,
   modalComponent: ModalComponent,
   path = "",
+  link = true,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState("");
@@ -70,7 +71,7 @@ const Table = ({
               <th
                 key={index}
                 className={`py-[22px] px-[10px] text-[#6A7683] font-[400] text-[14px] ${
-                  type === "FranchiseOrderSection"
+                  type === "Admin-FranchiseOrderSection"
                     ? "border-l border-[#F5F7FA] border-r"
                     : "border-0"
                 }`}
@@ -94,7 +95,9 @@ const Table = ({
               >
                 {columns.map((column, colIndex) => (
                   <td
-                    onClick={() => navigate(`${path}/${item.franchisee_iD}`)}
+                    onClick={() =>
+                      link && navigate(`${path}/${item[column.id]}`)
+                    }
                     key={colIndex}
                     className={`py-[22px] px-[16px] text-[14px] ${
                       type === "Admin-FranchiseOrderSection"
@@ -127,7 +130,6 @@ const Table = ({
                     <img src="/image/option_icon.svg" alt="icon" />
                   </td>
                 )}
-                {/* Admin-Franchisee */}
               </tr>
 
               {isModalOpen && modalRowIndex === rowIndex && (

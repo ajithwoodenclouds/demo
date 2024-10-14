@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Sidebar from "../../components/general/Sidebar";
 import Header from "../../components/general/Header";
 import SectionMiniHeader from "../../components/general/SectionMiniHeader";
-import TableComponent from "../../components/Table/TableComponent";
 import { columns, data, colors } from "../../utils/franchisee_list";
 import PaginationComponent from "../../components/pagination/PaginationComponent";
 import CreateFranchisee from "../../components/form/CreateFranchisee";
