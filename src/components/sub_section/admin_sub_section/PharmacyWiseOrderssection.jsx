@@ -22,8 +22,8 @@ export default function PharmacyWiseOrderssection() {
   const currentUsers = data.slice(startIndex, startIndex + itemsPerPage);
 
   return (
-    <div className="p-4">
-      <div className="flex justify-between text-[#0A0A0A] text-[18px] font-interRegular font-[400]">
+    <div>
+      <div className="flex justify-between text-[#0A0A0A]  px-4 pt-4 text-[18px] font-interRegular font-[400]">
         <h3>Pharmacy wise orders</h3>
         <DateSelector
           selectedDate={selectedDate}

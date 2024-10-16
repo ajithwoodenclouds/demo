@@ -62,7 +62,9 @@ export default function Franchisee() {
               handlePageClick={handlePageClick}
             />
           </div>
-          {isModalOpen && <CreateFranchisee closeModal={closeModal} />}
+          {isModalOpen && (
+            <CreateFranchisee closeModal={closeModal} isOpen={isModalOpen} />
+          )}
         </div>
       </div>
       <Outlet />

@@ -1,4 +1,5 @@
 import React from "react";
+import MiniButton from "../buttons/MiniButton";
 
 const BusinessCard = ({ data, title = "" }) => {
   return (
@@ -51,9 +52,7 @@ const BusinessCard = ({ data, title = "" }) => {
               <h3 className="font-[500] font-interSemibold text-[16px] text-[#269149]">
                 Basic plan
               </h3>
-              <button className="bg-[#269149] text-[#FFFFFF] text-[14px] font-interRegular font-[400] p-[10px] rounded-[8px]">
-                Active
-              </button>
+              <MiniButton title="Active" />
             </div>
           )}
         </div>

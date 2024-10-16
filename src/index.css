@@ -28,3 +28,11 @@
 .transition-opacity {
   transition: opacity 300ms ease;
 }
+.leaflet-touch .leaflet-control-attribution {
+  display: none;
+}
+.leaflet-popup-content {
+  width: 201px;
+  display: flex;
+  height: 60px;
+}

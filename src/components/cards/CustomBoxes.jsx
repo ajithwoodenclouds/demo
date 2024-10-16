@@ -1,7 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function CustomBoxes({ data = "", type = "deafult" }) {
+export default function CustomBoxes({
+  data = "",
+  type = "deafult",
+  link = false,
+  style = "",
+}) {
   const navigate = useNavigate();
   const style_deafut = {
     backgroundSize: "50%",
@@ -12,7 +17,7 @@ export default function CustomBoxes({ data = "", type = "deafult" }) {
     <div className="container mx-auto px-5 py-5">
       <div
         className={`grid grid-cols-1 ${
-          type == "pharmacies_One" ? "md:grid-cols-2" : "md:grid-cols-3"
+          style == "double" ? "md:grid-cols-2" : "md:grid-cols-3"
         }  gap-6`}
       >
         {data.map((item) => {
@@ -85,7 +90,7 @@ export default function CustomBoxes({ data = "", type = "deafult" }) {
                         !item.color ? "text-[#fff]" : "text-[#1C1C1C]"
                       }`}
                     >
-                      View history
+                      {item.path_name}
                     </h4>
                     {!item.color ? (
                       <img src="/image/arrow _right.svg" alt="arrow" />

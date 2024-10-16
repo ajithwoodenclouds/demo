@@ -9,6 +9,8 @@ import Pharmacies_list from "../../components/sub_section/admin_sub_section/Phar
 import PharmaciesOneSection from "../../components/sub_section/admin_sub_section/PharmaciesOneSection";
 import DriversList from "../../components/sub_section/admin_sub_section/DriversList";
 import DriversOneSection from "../../components/sub_section/admin_sub_section/DriversOneSection";
+import Account from "../../admin-screens/accounts/Account";
+import DuesList from "../../components/sub_section/admin_sub_section/DuesList";
 
 const AppRouter = () => {
   return (
@@ -21,6 +23,8 @@ const AppRouter = () => {
       <Route path="/pharmacies/:id" element={<PharmaciesOneSection />} />
       <Route path="/drivers" element={<DriversList />} />
       <Route path="/drivers/:id" element={<DriversOneSection />} />
+      <Route path="/accounts" element={<Account />} />
+      <Route path="/due-list" element={<DuesList />} />
     </Routes>
   );
 };

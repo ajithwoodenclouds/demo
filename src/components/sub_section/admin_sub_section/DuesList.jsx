@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import Sidebar from "../../general/Sidebar";
 import Header from "../../general/Header";
-import SectionMiniHeader from "../../general/SectionMiniHeader";
-import PaginationComponent from "../../pagination/PaginationComponent";
-import { columns, processedData, colors } from "../../../utils/drivers_list";
 import DoubleDataTable from "../../Table/DoubleDataTable";
+import {
+  processedData,
+  columns,
+  colors,
+} from "../../../utils/admin-account-dueList";
+import PaginationComponent from "../../pagination/PaginationComponent";
+import GenerateBillForm from "../../form/GenerateBillForm";
 
-export default function () {
+export default function DuesList() {
   const [currentPage, setCurrentPage] = useState(0);
+  const [isModalOpen, setModalOpen] = useState(false); // Modal open state
+  const [modalData, setModalData] = useState(null);
 
   const itemsPerPage = 5;
 
@@ -23,22 +29,32 @@ export default function () {
     startIndex + itemsPerPage
   );
 
+  const handleOpenModal = (data) => {
+    setModalData(data); // Pass the clicked row data to the modal
+    setModalOpen(true); // Open the modal
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false); // Close the modal
+  };
+
   return (
     <div className="bg-[#F5F7FA] w-full">
       <div className="flex w-full justify-between">
         <Sidebar />
         <div className="w-full">
-          <Header
-            pervious="Franchisees / Franchisees One /"
-            current="Drivers"
-          />
-          <SectionMiniHeader title="Drivers list" type="Admin-Drivers list" />
+          <Header pervious="Accounts / " current="Due list" />
+          <div className="flex justify-between text-[#0A0A0A] px-4 pt-4 text-[18px] font-interRegular font-[400]">
+            <h3>Dues list</h3>
+          </div>
           <DoubleDataTable
             data={currentUsers}
             columns={columns}
             colors={colors}
-            type="Admin-Drivers-List"
-            path="/drivers"
+            link={false}
+            type="Admin-DuesList"
+            action={true}
+            onRowClick={handleOpenModal}
           />
           <div className="flex font-interRegular text-[#7B7B75] p-4 text-[12px] justify-between items-center">
             <h4>
@@ -50,6 +66,13 @@ export default function () {
               handlePageClick={handlePageClick}
             />
           </div>
+          {isModalOpen && modalData && (
+            <GenerateBillForm
+              data={modalData}
+              isOpen={isModalOpen}
+              closeModal={handleCloseModal}
+            />
+          )}
         </div>
       </div>
     </div>

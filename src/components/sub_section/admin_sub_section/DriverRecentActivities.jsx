@@ -1,16 +1,14 @@
 import React, { useState } from "react";
-import DateSelector from "../../filtter_box/DateSelector";
 import {
   processedData,
   colors,
   columns,
-} from "../../../utils/admin-recent-orders";
+} from "../../../utils/admin-driver-recent-activities";
 import PaginationComponent from "../../pagination/PaginationComponent";
 import DoubleDataTable from "../../Table/DoubleDataTable";
 import DetailsModal from "../../modal/DetailsModal";
 
-export default function RecentOrdersSection() {
-  const [selectedDate, setSelectedDate] = useState("Today");
+export default function DriverRecentActivities() {
   const [currentPage, setCurrentPage] = useState(0);
   const [isModalOpen, setModalOpen] = useState(false); // Modal open state
   const [modalData, setModalData] = useState(null); // Modal data state
@@ -44,11 +42,7 @@ export default function RecentOrdersSection() {
   return (
     <div>
       <div className="flex justify-between text-[#0A0A0A] p-4 text-[18px] font-interRegular font-[400]">
-        <h3>Recent orders</h3>
-        <DateSelector
-          selectedDate={selectedDate}
-          onSelectDate={setSelectedDate}
-        />
+        <h3>Recent activities</h3>
       </div>
 
       {/* Pass handleOpenModal to DoubleDataTable */}
@@ -57,8 +51,7 @@ export default function RecentOrdersSection() {
         columns={columns}
         colors={colors}
         link={false}
-        type="Admin-Recent-Orders"
-        action={true}
+        type="Driver-Recent-Activities"
         onRowClick={handleOpenModal} // Handle row click to open modal
       />
 

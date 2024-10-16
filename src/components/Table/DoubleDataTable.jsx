@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import SubBox from "../filtter_box/SubBox";
 import { useNavigate } from "react-router-dom";
+import CustomButton from "../buttons/CustomButton";
 
 const DoubleDataTable = ({
   data = [],
@@ -12,6 +13,7 @@ const DoubleDataTable = ({
   renderSubComponent,
   modalComponent: ModalComponent,
   path = "",
+  action = false,
   link = true,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -95,22 +97,11 @@ const DoubleDataTable = ({
               </th>
             ))}
             {/* Admin-Franchisee */}
-            {type == "Admin-Franchisee" && (
-              <th className="py-[22px] px-[10px] text-[#6A7683] font-[400] text-[14px]">
+            {action && (
+              <th className="py-[22px] px-[10px]  text-[#6A7683] font-[400] text-[14px]">
                 Action
               </th>
             )}
-            {/* Admin-Franchisee */}
-
-            {/* Admin-Recent-Orders */}
-            {type == "Admin-Recent-Orders" && (
-              <th
-                className={`py-[22px] px-[10px] text-[#6A7683] font-[400] text-[14px]`}
-              >
-                Action
-              </th>
-            )}
-            {/* Admin-Recent-Orders */}
           </tr>
         </thead>
         <tbody>
@@ -136,7 +127,7 @@ const DoubleDataTable = ({
                             className="w-10 h-10 object-cover"
                           />
                           <span className={`text-[14px] text-[#6A7683]`}>
-                            {cellValue[1]}{" "}
+                            {cellValue[1]}
                           </span>
                         </td>
                       )}
@@ -178,6 +169,69 @@ const DoubleDataTable = ({
                         </td>
                       )}
                       {/* Admin-Drivers-List End */}
+                      {/* Driver-Recent-Activities */}
+                      {type === "Driver-Recent-Activities" && (
+                        <td
+                          key={colIndex}
+                          className={`py-[22px] px-[14px] items-center gap-3  justify-center flex  text-[14px] border-0`}
+                        >
+                          <img
+                            src={cellValue[1]}
+                            alt={`Image at ${cellValue}`}
+                          />
+                          <div className="flex flex-col   w-[60%] justify-center items-start ">
+                            <span className={`text-[14px]  text-[#212529]`}>
+                              {cellValue[0]}
+                            </span>
+                          </div>
+                        </td>
+                      )}
+                      {/* Driver-Recent-Activities End */}
+                      {/* Admin-Generated-Invoices */}
+                      {type == "Admin-Generated-Invoices" &&
+                        (column.accessor == "franchisee_deatils" ? (
+                          <td
+                            key={colIndex}
+                            className={`py-[22px] px-[14px] flex  items-center flex-col gap-2 text-[14px] border-0`}
+                          >
+                            <div className="flex flex-col items-start">
+                              <span>{cellValue[0]}</span>
+
+                              <span className={`text-[14px] text-[#6A7683]`}>
+                                {cellValue[1]}
+                              </span>
+                            </div>
+                          </td>
+                        ) : (
+                          <td
+                            key={colIndex}
+                            className={`py-[22px] px-[14px] flex  items-center flex-col gap-2 text-[14px] border-0`}
+                          >
+                            <div className="flex flex-col  items-start">
+                              <CustomButton
+                                text="Verify"
+                                style="w-[94px] h-[32px] bg-[#0E3281] text-[14px] font-[400] font-interRegular flex items-center text-[#fff] justify-center py-[10px] px[16px] rounded-[20px]"
+                              />
+                            </div>
+                          </td>
+                        ))}
+                      {/* Admin-Generated-Invoices End */}
+                      {/* Admin-DuesList */}
+                      {type === "Admin-DuesList" && (
+                        <td
+                          key={colIndex}
+                          className={`py-[22px] px-[14px] flex  items-center flex-col gap-2 text-[14px] border-0`}
+                        >
+                          <div className="flex flex-col items-start">
+                            <span>{cellValue[0]}</span>
+
+                            <span className={`text-[14px] text-[#6A7683]`}>
+                              {cellValue[1]}
+                            </span>
+                          </div>
+                        </td>
+                      )}
+                      {/* Admin-DuesList End */}
                     </div>
                   ) : (
                     <td
@@ -209,14 +263,39 @@ const DoubleDataTable = ({
                   );
                 })}
                 {/* Admin-Recent-Orders */}
-                {type == "Admin-Recent-Orders" && (
+                {type === "Admin-Recent-Orders" && (
                   <td
                     className={`py-[22px] px-[14px] text-[#2080D9] text-[14px]`}
                   >
                     <span onClick={() => onRowClick(item)}>Details</span>
                   </td>
                 )}
-                {/* Admin-Recent-Orders */}
+                {/* Admin-Recent-Orders End */}
+                {/* Admin-Generated-Invoices */}
+                {type === "Admin-Generated-Invoices" && (
+                  <td>
+                    <div className="flex items-center gap-3">
+                      <img src="/image/download_arrow.svg" alt="icon" />
+                      <span className="text-[#0E3281] text-[16px]">
+                        Download Invoice
+                      </span>
+                    </div>
+                  </td>
+                )}
+                {/* Admin-Generated-Invoices End */}
+                {/* Admin-DuesList */}
+                {type === "Admin-DuesList" && (
+                  <td
+                    className={`py-[22px] px-[14px] justify-center flex items-center text-[#2080D9] text-[14px]`}
+                  >
+                    <CustomButton
+                      onClick={() => onRowClick(item)}
+                      text="Generate bill"
+                      style="w-[104px] h-[32px] bg-[#0E3281] text-[14px] font-[400] font-interRegular flex items-center text-[#fff] justify-center py-[10px] px[16px] rounded-[20px]"
+                    />
+                  </td>
+                )}
+                {/* Admin-DuesList End */}
               </tr>
 
               {isModalOpen && modalRowIndex === rowIndex && (

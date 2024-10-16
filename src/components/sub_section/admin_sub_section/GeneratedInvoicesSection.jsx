@@ -4,12 +4,12 @@ import {
   processedData,
   colors,
   columns,
-} from "../../../utils/admin-recent-orders";
+} from "../../../utils/admin-account-generated-invoices";
 import PaginationComponent from "../../pagination/PaginationComponent";
 import DoubleDataTable from "../../Table/DoubleDataTable";
 import DetailsModal from "../../modal/DetailsModal";
 
-export default function RecentOrdersSection() {
+export default function GeneratedInvoicesSection() {
   const [selectedDate, setSelectedDate] = useState("Today");
   const [currentPage, setCurrentPage] = useState(0);
   const [isModalOpen, setModalOpen] = useState(false); // Modal open state
@@ -44,11 +44,21 @@ export default function RecentOrdersSection() {
   return (
     <div>
       <div className="flex justify-between text-[#0A0A0A] p-4 text-[18px] font-interRegular font-[400]">
-        <h3>Recent orders</h3>
-        <DateSelector
-          selectedDate={selectedDate}
-          onSelectDate={setSelectedDate}
-        />
+        <h3>Generated invoices</h3>
+        <div className="flex items-center gap-6">
+          <div className="flex items-center gap-3">
+            <img src="/image/blue_add_icon.svg" alt="icon" />
+            <h3 className="text-[16px] font-interRegular font-[400] text-[#0E3281]">
+              Generate invoice
+            </h3>
+          </div>
+          <div className="flex items-center gap-3">
+            <img src="/image/filter_icon.svg" alt="icon" />
+            <h3 className="text-[16px] font-interRegular font-[400] text-[#1C1C1C]">
+              Filter
+            </h3>
+          </div>
+        </div>
       </div>
 
       {/* Pass handleOpenModal to DoubleDataTable */}
@@ -57,8 +67,8 @@ export default function RecentOrdersSection() {
         columns={columns}
         colors={colors}
         link={false}
-        type="Admin-Recent-Orders"
         action={true}
+        type="Admin-Generated-Invoices"
         onRowClick={handleOpenModal} // Handle row click to open modal
       />
 

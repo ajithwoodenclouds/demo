@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CustomButton from "../buttons/CustomButton";
 
-const CreateFranchisee = ({ closeModal }) => {
+const CreateFranchisee = ({ closeModal, isOpen }) => {
   const [step, setStep] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   const nextStep = () => {
     if (step < 3) setStep(step + 1);
@@ -18,6 +19,16 @@ const CreateFranchisee = ({ closeModal }) => {
     console.log("Form submitted");
     // Submit form logic here
   };
+  useEffect(() => {
+    if (isOpen) {
+      // Delay showing the modal to allow for animation
+      setTimeout(() => {
+        setShowModal(true);
+      }, 10); // Small delay to allow CSS transition
+    } else {
+      setShowModal(false);
+    }
+  }, [isOpen]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -26,8 +37,16 @@ const CreateFranchisee = ({ closeModal }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex  p-[10px]  bg-black bg-opacity-50">
-      <div className="w-full">
+    <div
+      className={`fixed inset-0 flex p-[10px] bg-black bg-opacity-50 transition-opacity duration-500 ${
+        showModal ? "opacity-100" : "opacity-0"
+      }`}
+    >
+      <div
+        className={`w-full transition-transform duration-500 ${
+          showModal ? "translate-y-0 scale-100" : "translate-y-4 scale-95"
+        }`}
+      >
         <div className="bg-white px-[180px] py-[72px] rounded-lg shadow-lg w-full h-fit relative">
           <div className="flex gap-3 mb-[30px]">
             <img src="/image/franchisee_icon.svg" alt="icon" />
@@ -45,7 +64,7 @@ const CreateFranchisee = ({ closeModal }) => {
                 <div>
                   <label
                     htmlFor="firstName"
-                    className="block font-interRegular mb-[10px] text-[16px] text-[#6A7683]"
+                    className="block font-interRegular mb-[10px] font-[400] text-[16px] text-[#6A7683]"
                   >
                     Name
                   </label>
@@ -60,7 +79,7 @@ const CreateFranchisee = ({ closeModal }) => {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block font-interRegular mb-[10px] text-[16px] text-[#6A7683]"
+                    className="block font-interRegular mb-[10px] font-[400] text-[16px] text-[#6A7683]"
                   >
                     Email Id
                   </label>
@@ -75,7 +94,7 @@ const CreateFranchisee = ({ closeModal }) => {
                 <div>
                   <label
                     htmlFor="phone"
-                    className="block font-interRegular mb-[10px] text-[16px] text-[#6A7683]"
+                    className="block font-interRegular mb-[10px] font-[400] text-[16px] text-[#6A7683]"
                   >
                     Phone Number
                   </label>
@@ -90,7 +109,7 @@ const CreateFranchisee = ({ closeModal }) => {
                 <div>
                   <label
                     htmlFor="companyName"
-                    className="block font-interRegular mb-[10px] text-[16px] text-[#6A7683]"
+                    className="block font-interRegular mb-[10px] font-[400] text-[16px] text-[#6A7683]"
                   >
                     Company Name
                   </label>
@@ -105,7 +124,7 @@ const CreateFranchisee = ({ closeModal }) => {
                 <div>
                   <label
                     htmlFor="companyRegNo"
-                    className="block font-interRegular mb-[10px] text-[16px] text-[#6A7683]"
+                    className="block font-interRegular mb-[10px] font-[400] text-[16px] text-[#6A7683]"
                   >
                     Company Reg No.
                   </label>
@@ -120,7 +139,7 @@ const CreateFranchisee = ({ closeModal }) => {
                 <div>
                   <label
                     htmlFor="commission"
-                    className="block font-interRegular mb-[10px] text-[16px] text-[#6A7683]"
+                    className="block font-interRegular mb-[10px] font-[400] text-[16px] text-[#6A7683]"
                   >
                     Commission
                   </label>
@@ -135,7 +154,7 @@ const CreateFranchisee = ({ closeModal }) => {
                 <div>
                   <label
                     htmlFor="hst"
-                    className="block font-interRegular mb-[10px] text-[16px] text-[#6A7683]"
+                    className="block font-interRegular mb-[10px] font-[400] text-[16px] text-[#6A7683]"
                   >
                     HST
                   </label>

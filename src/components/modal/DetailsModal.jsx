@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 
 const DetailsModal = ({ isOpen, onClose, data }) => {
-  // Close the modal when the user clicks outside of it
   console.log(data);
 
   const handleOverlayClick = (e) => {
@@ -30,17 +29,20 @@ const DetailsModal = ({ isOpen, onClose, data }) => {
           className={`fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-300 ${
             isOpen ? "opacity-100" : "opacity-0"
           }`}
-          onClick={handleOverlayClick} // Close on overlay click
+          onClick={handleOverlayClick}
         ></div>
       )}
 
       {/* Modal */}
       <div
-        className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-transform duration-300 transform ${
-          isOpen ? "translate-y-0" : "translate-y-full"
+        className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-all duration-300 transform ${
+          isOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"
         }`}
+        style={{
+          pointerEvents: isOpen ? "auto" : "none",
+        }}
       >
-        <div className="bg-[#FFFFFF] shadow-lg rounded-[16px] max-w-[600px] w-full p-[22px]">
+        <div className="bg-[#FFFFFF] shadow-lg rounded-[16px] max-w-[600px] w-full p-[22px] transition-transform duration-300 transform">
           {/* Top Section */}
           <div className="modal-header flex justify-between items-center border-b pb-4 mb-4">
             <h3 className="text-[18px] text-[#010101] font-[500] font-interSemibold">
@@ -156,7 +158,9 @@ const DetailsModal = ({ isOpen, onClose, data }) => {
                   </h3>
                 </div>
                 <div>
-                  <h3 className="font-semibold">Photos</h3>
+                  <h3 className="text-[14px] text-[#7F7F7F] font-[400]">
+                    Photos
+                  </h3>
                   <div className="bg-[#F5F7FA] grid grid-cols-2 gap-2 p-[8px]">
                     <img src="/image/demo1.png" alt="Icon" />
                     <img src="/image/demo1.png" alt="Icon" />

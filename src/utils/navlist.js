@@ -18,7 +18,7 @@ export const menuItems = [
     title: "Accounts",
     icon: "/image/account_icon.svg",
     light_icon: "image/account_icon_light.svg",
-    // path: "/accounts",
+    path: "/accounts",
   },
   {
     id: 4,

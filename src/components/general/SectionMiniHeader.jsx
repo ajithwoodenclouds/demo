@@ -3,6 +3,7 @@ import React from "react";
 import CreateActions from "./CreateActions";
 import UpdateAction from "./UpdateAction";
 import FilterActions from "./FilterAction";
+import PdfAction from "./PdfAction";
 
 const SectionMiniHeader = ({ handlClick, type = "", title = "" }) => {
   return (
@@ -16,6 +17,7 @@ const SectionMiniHeader = ({ handlClick, type = "", title = "" }) => {
         )}
         {type === "Admin-Franchisee-One" && <UpdateAction />}
         {type === "Admin-Pharmacies_List" && <FilterActions />}
+        {type === "Admin-Accounts" && <PdfAction />}
       </div>
     </div>
   );
