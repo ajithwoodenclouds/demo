@@ -134,3 +134,16 @@ export const accounts_admin_card_data = [
     path_name: "Due list",
   },
 ];
+
+export const due_list_One_admin_data = [
+  {
+    id: 1,
+    title: "Pending due amount",
+    amount: "$6,97,671",
+    // image: "/image/due_icon.svg",
+    color: "bg-[#B0E2CD]",
+    amount_des: "Payables to (franchisee n...)",
+    amount_des1: "Receivable from (franchisee n...)",
+    path: "/pharmacies",
+  },
+];

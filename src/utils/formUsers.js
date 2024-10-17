@@ -105,3 +105,12 @@ export const colors = [
   "#E69C1D",
   "#D14B4B",
 ];
+export const head_colors = [
+  "#6A7683",
+  "#6A7683",
+  "#6A7683",
+  "#48AE50",
+  "#418BD6",
+  "#E69C1D",
+  "#D14B4B",
+];

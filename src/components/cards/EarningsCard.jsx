@@ -20,7 +20,7 @@ const EarningsCard = () => {
       <div className="flex justify-end items-center">
         <div className="relative text-[#000]">
           <YearSelector
-            color="bg-custom-rgba p-4 text-[#FFFFFF] font-interRegular"
+            color="bg-custom-rgba p-4 text-[#FFFFFF] border-hidden font-interRegular"
             selectedYear={selectedPeriod}
             onSelectYear={setSelectedPeriod}
           />

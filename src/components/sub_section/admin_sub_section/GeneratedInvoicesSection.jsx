@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import DateSelector from "../../filtter_box/DateSelector";
 import {
   processedData,
   colors,
@@ -8,9 +7,9 @@ import {
 import PaginationComponent from "../../pagination/PaginationComponent";
 import DoubleDataTable from "../../Table/DoubleDataTable";
 import DetailsModal from "../../modal/DetailsModal";
+import VerifyPaymentModal from "../../modal/VerifyPaymentModal";
 
 export default function GeneratedInvoicesSection() {
-  const [selectedDate, setSelectedDate] = useState("Today");
   const [currentPage, setCurrentPage] = useState(0);
   const [isModalOpen, setModalOpen] = useState(false); // Modal open state
   const [modalData, setModalData] = useState(null); // Modal data state
@@ -69,7 +68,7 @@ export default function GeneratedInvoicesSection() {
         link={false}
         action={true}
         type="Admin-Generated-Invoices"
-        onRowClick={handleOpenModal} // Handle row click to open modal
+        onRowClick={handleOpenModal}
       />
 
       <div className="flex font-interRegular text-[#7B7B75] p-4 text-[12px] justify-between items-center">
@@ -84,11 +83,12 @@ export default function GeneratedInvoicesSection() {
       </div>
 
       {/* Include DetailsModal */}
+
       {isModalOpen && modalData && (
-        <DetailsModal
+        <VerifyPaymentModal
           isOpen={isModalOpen}
-          onClose={handleCloseModal} // Close modal handler
-          data={modalData} // Pass modal data to DetailsModal
+          data={modalData}
+          setIsOpen={setModalOpen}
         />
       )}
     </div>

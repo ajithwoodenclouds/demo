@@ -210,6 +210,7 @@ const DoubleDataTable = ({
                             <div className="flex flex-col  items-start">
                               <CustomButton
                                 text="Verify"
+                                onClick={() => onRowClick(item)}
                                 style="w-[94px] h-[32px] bg-[#0E3281] text-[14px] font-[400] font-interRegular flex items-center text-[#fff] justify-center py-[10px] px[16px] rounded-[20px]"
                               />
                             </div>

@@ -11,6 +11,7 @@ import DriversList from "../../components/sub_section/admin_sub_section/DriversL
 import DriversOneSection from "../../components/sub_section/admin_sub_section/DriversOneSection";
 import Account from "../../admin-screens/accounts/Account";
 import DuesList from "../../components/sub_section/admin_sub_section/DuesList";
+import DueOneSection from "../../components/sub_section/admin_sub_section/DueOneSection";
 
 const AppRouter = () => {
   return (
@@ -25,6 +26,7 @@ const AppRouter = () => {
       <Route path="/drivers/:id" element={<DriversOneSection />} />
       <Route path="/accounts" element={<Account />} />
       <Route path="/due-list" element={<DuesList />} />
+      <Route path="/due-list/:id" element={<DueOneSection />} />
     </Routes>
   );
 };

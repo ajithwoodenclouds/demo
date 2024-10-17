@@ -2,7 +2,7 @@ export const data = [
   {
     sl_no: "01",
     franchisee: "MediCare Pharmacy",
-    franchisee_id: "#121433423",
+    franchisee_id: 121433423,
     location: "Torrento, 138 rd Hamilton 21",
     due_amount: "$32",
     due_date: "20 Jan, 2024",
@@ -10,7 +10,7 @@ export const data = [
   {
     sl_no: "01",
     franchisee: "MediCare Pharmacy",
-    franchisee_id: "#121433423",
+    franchisee_id: 121433423,
     location: "Torrento, 138 rd Hamilton 21",
     due_amount: "$32",
     due_date: "20 Jan, 2024",
@@ -18,7 +18,7 @@ export const data = [
   {
     sl_no: "01",
     franchisee: "MediCare Pharmacy",
-    franchisee_id: "#121433423",
+    franchisee_id: 121433423,
     location: "Torrento, 138 rd Hamilton 21",
     due_amount: "$32",
     due_date: "20 Jan, 2024",
@@ -26,7 +26,7 @@ export const data = [
   {
     sl_no: "01",
     franchisee: "MediCare Pharmacy",
-    franchisee_id: "#121433423",
+    franchisee_id: 121433423,
     location: "Torrento, 138 rd Hamilton 21",
     due_amount: "$32",
     due_date: "20 Jan, 2024",
@@ -34,7 +34,7 @@ export const data = [
   {
     sl_no: "01",
     franchisee: "MediCare Pharmacy",
-    franchisee_id: "#121433423",
+    franchisee_id: 121433423,
     location: "Torrento, 138 rd Hamilton 21",
     due_amount: "$32",
     due_date: "20 Jan, 2024",
@@ -42,7 +42,7 @@ export const data = [
   {
     sl_no: "01",
     franchisee: "MediCare Pharmacy",
-    franchisee_id: "#121433423",
+    franchisee_id: 121433423,
     location: "Torrento, 138 rd Hamilton 21",
     due_amount: "$32",
     due_date: "20 Jan, 2024",
@@ -50,7 +50,7 @@ export const data = [
   {
     sl_no: "01",
     franchisee: "MediCare Pharmacy",
-    franchisee_id: "#121433423",
+    franchisee_id: 121433423,
     location: "Torrento, 138 rd Hamilton 21",
     due_amount: "$32",
     due_date: "20 Jan, 2024",
@@ -58,7 +58,7 @@ export const data = [
   {
     sl_no: "01",
     franchisee: "MediCare Pharmacy",
-    franchisee_id: "#121433423",
+    franchisee_id: 121433423,
     location: "Torrento, 138 rd Hamilton 21",
     due_amount: "$32",
     due_date: "20 Jan, 2024",
@@ -66,7 +66,7 @@ export const data = [
   {
     sl_no: "01",
     franchisee: "MediCare Pharmacy",
-    franchisee_id: "#121433423",
+    franchisee_id: 121433423,
     location: "Torrento, 138 rd Hamilton 21",
     due_amount: "$32",
     due_date: "20 Jan, 2024",
@@ -74,7 +74,7 @@ export const data = [
   {
     sl_no: "01",
     franchisee: "MediCare Pharmacy",
-    franchisee_id: "#121433423",
+    franchisee_id: 121433423,
     location: "Torrento, 138 rd Hamilton 21",
     due_amount: "$32",
     due_date: "20 Jan, 2024",
@@ -82,7 +82,7 @@ export const data = [
   {
     sl_no: "01",
     franchisee: "MediCare Pharmacy",
-    franchisee_id: "#121433423",
+    franchisee_id: 121433423,
     location: "Torrento, 138 rd Hamilton 21",
     due_amount: "$32",
     due_date: "20 Jan, 2024",
@@ -97,10 +97,10 @@ export const processedData = data.map((item) => ({
 
 // Step 2: Define the columns
 export const columns = [
-  { header: "Sl no", accessor: "sl_no" },
-  { header: "Franchisee", accessor: "franchisee_deatils" },
-  { header: "Location", accessor: "location" },
-  { header: "Due amount", accessor: "due_amount" },
+  { header: "Sl no", accessor: "sl_no", id: "franchisee_id" },
+  { header: "Franchisee", accessor: "franchisee_deatils", id: "franchisee_id" },
+  { header: "Location", accessor: "location", id: "franchisee_id" },
+  { header: "Due amount", accessor: "due_amount", id: "franchisee_id" },
 ];
 export const colors = ["#6A7683", "#6A7683", "#6A7683", "#48AE50"];
 export const head_colors = ["#6A7683", "#6A7683", "#6A7683", "#6A7683"];

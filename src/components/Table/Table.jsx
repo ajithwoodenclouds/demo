@@ -11,6 +11,7 @@ const Table = ({
   renderSubComponent,
   modalComponent: ModalComponent,
   path = "",
+  head_colors,
   link = true,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,6 +34,15 @@ const Table = ({
         setIsModalOpen(true);
       },
     });
+  };
+
+  const getPendingBalance = (status) => {
+    switch (status) {
+      case "Nill":
+        return "text-[#1C1C1C]"; // Green for Delivered
+      default:
+        return "text-[#E69C1D]"; // Default color
+    }
   };
 
   useEffect(() => {
@@ -75,7 +85,7 @@ const Table = ({
                     ? "border-l border-[#F5F7FA] border-r"
                     : "border-0"
                 }`}
-                style={{ color: colors[index % colors.length] }}
+                style={{ color: head_colors[index % head_colors.length] }}
               >
                 {column.header}
               </th>
@@ -112,6 +122,12 @@ const Table = ({
                         alt={`Image at ${item[column.accessor]}`}
                         className="w-10 h-10 object-cover"
                       />
+                    ) : column.accessor === "pending_balance" ? (
+                      <span
+                        className={getPendingBalance(item[column.accessor])}
+                      >
+                        {item[column.accessor]}
+                      </span>
                     ) : (
                       item[column.accessor]
                     )}

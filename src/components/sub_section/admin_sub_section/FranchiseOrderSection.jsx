@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import DateSelector from "../../filtter_box/DateSelector";
-import { processedData, colors, columns } from "../../../utils/formUsers";
+import {
+  processedData,
+  colors,
+  columns,
+  head_colors,
+} from "../../../utils/formUsers";
 import PaginationComponent from "../../pagination/PaginationComponent";
 import DoubleDataTable from "../../Table/DoubleDataTable";
 
@@ -37,6 +42,7 @@ export default function FranchiseOrderSection() {
         columns={columns}
         colors={colors}
         link={false}
+        head_colors={head_colors}
         type="Admin-FranchiseOrderSection"
       />
       <div className="flex font-interRegular text-[#7B7B75] p-4 text-[12px] justify-between items-center">

@@ -5,6 +5,7 @@ import { FiFilter } from "react-icons/fi";
 import { columns, data, colors } from "../../../utils/history_data";
 import PaginationComponent from "../../pagination/PaginationComponent";
 import Table from "../../Table/Table";
+import { head_colors } from "../../../utils/franchisee_list";
 
 export default function TransactionHistorySection() {
   const [currentPage, setCurrentPage] = useState(0);
@@ -48,6 +49,7 @@ export default function TransactionHistorySection() {
             columns={columns}
             colors={colors}
             link={false}
+            head_colors={head_colors}
             type="Admin-TransAction-History"
           />
           <div className="flex font-interRegular text-[#7B7B75] p-4 text-[12px] justify-between items-center">

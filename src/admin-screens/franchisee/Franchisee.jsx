@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import Sidebar from "../../components/general/Sidebar";
 import Header from "../../components/general/Header";
 import SectionMiniHeader from "../../components/general/SectionMiniHeader";
-import { columns, data, colors } from "../../utils/franchisee_list";
+import {
+  columns,
+  data,
+  colors,
+  head_colors,
+} from "../../utils/franchisee_list";
 import PaginationComponent from "../../components/pagination/PaginationComponent";
 import CreateFranchisee from "../../components/form/CreateFranchisee";
 import Table from "../../components/Table/Table";
@@ -42,6 +47,7 @@ export default function Franchisee() {
             data={currentUsers}
             columns={columns}
             colors={colors}
+            head_colors={head_colors}
             onRowClick={(item, rowIndex, { openModal }) => {
               openModal(
                 `Details for ${item.Sno}`,

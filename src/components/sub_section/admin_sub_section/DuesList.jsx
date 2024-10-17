@@ -51,7 +51,8 @@ export default function DuesList() {
             data={currentUsers}
             columns={columns}
             colors={colors}
-            link={false}
+            link={true}
+            path="/due-list"
             type="Admin-DuesList"
             action={true}
             onRowClick={handleOpenModal}

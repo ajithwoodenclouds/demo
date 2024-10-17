@@ -82,3 +82,5 @@ export const data = [
 ];
 
 export const colors = ["#6A7683", "#6A7683", "#6A7683", "#6A7683"];
+
+export const head_colors = ["#6A7683", "#6A7683", "#6A7683", "#6A7683"];
