@@ -8,7 +8,7 @@ import { useState, useEffect, useRef } from "react";
 // Custom icon for the car
 const carMarkerIcon = new L.Icon({
   iconUrl: carIcon,
-  iconSize: [35, 35],
+  iconSize: [250, 250],
 });
 
 export default function MapSection() {

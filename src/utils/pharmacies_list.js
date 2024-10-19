@@ -74,3 +74,4 @@ export const data = [
 ];
 
 export const colors = ["#6A7683", "#6A7683", "#6A7683", "#6A7683"];
+export const header_colors = ["#6A7683", "#6A7683", "#6A7683", "#6A7683"];

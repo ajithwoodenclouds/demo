@@ -8,6 +8,7 @@ const Table = ({
   colors = [],
   type = "default",
   onRowClick,
+  action = false,
   renderSubComponent,
   modalComponent: ModalComponent,
   path = "",
@@ -90,7 +91,7 @@ const Table = ({
                 {column.header}
               </th>
             ))}
-            {type == "Admin-Franchisee" && (
+            {action && (
               <th className="py-[22px] px-[10px] text-[#6A7683] font-[400] text-[14px]">
                 Action
               </th>
@@ -134,18 +135,17 @@ const Table = ({
                   </td>
                 ))}
                 {/* Admin-Franchisee */}
-                {type == "Admin-Franchisee" && (
+                {(type == "Admin-Franchisee") | (type == "Admin-Users") ? (
                   <td
                     onClick={() =>
-                      type == "Admin-Franchisee"
-                        ? handleActionClick(item, rowIndex)
-                        : undefined
+                      (type === "Admin-Franchisee") | (type == "Admin-Users") &&
+                      handleActionClick(item, rowIndex)
                     }
-                    className={`py-[22px] px-[16px] text-[14px]`}
+                    className={`py-[22px] px-[16px] items-center justify-center flex text-[14px]`}
                   >
                     <img src="/image/option_icon.svg" alt="icon" />
                   </td>
-                )}
+                ) : null}
               </tr>
 
               {isModalOpen && modalRowIndex === rowIndex && (

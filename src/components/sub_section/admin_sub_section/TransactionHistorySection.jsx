@@ -19,7 +19,7 @@ export default function TransactionHistorySection() {
 
   const startIndex = currentPage * itemsPerPage;
   const currentUsers = data.slice(startIndex, startIndex + itemsPerPage);
-  console.log(currentUsers, "hvasdv");
+
   return (
     <div className="bg-[#F5F7FA] w-full">
       <div className="flex w-full justify-between">

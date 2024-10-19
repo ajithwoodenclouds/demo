@@ -1,9 +1,9 @@
 import React from "react";
-import CustomButton from "../../components/buttons/CustomButton";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { userUpdate } from "../../store/UserSlice";
 import { useNavigate } from "react-router-dom";
+import CustomButton from "../components/buttons/CustomButton";
+import { userUpdate } from "../store/UserSlice";
 
 const Login = () => {
   const [userData, setUserData] = useState({
@@ -22,10 +22,16 @@ const Login = () => {
     });
   };
 
-  const hnadleSubmit = () => {
+  const handleSubmit = () => {
     if (userData.email && userData.password) {
       dispatch(userUpdate({ ...userData, is_verifiyed: true }));
-      localStorage.setItem("token", "acess-token");
+      if (userData.email === "admin@gmail.com") {
+        localStorage.setItem("token", "acess-token-admin");
+      } else if (userData.email === "franchisee@gmail.com") {
+        localStorage.setItem("token", "acess-token-franchisee");
+      } else {
+        localStorage.setItem("token", "acess-token-pharmacy");
+      }
     }
     setUserData({
       email: "",
@@ -103,7 +109,7 @@ const Login = () => {
             <CustomButton
               text="Continue"
               style="w-full px-4 py-3 bg-[#0E3281] text-[#F9FBFC] text-[16px] rounded-[16px] focus:outline-none"
-              onClick={hnadleSubmit}
+              onClick={handleSubmit}
             />
           </form>
         </div>

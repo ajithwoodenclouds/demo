@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import Header from "../../general/Header";
 import Sidebar from "../../general/Sidebar";
-import { columns, data, colors } from "../../../utils/pharmacies_list";
+import {
+  columns,
+  data,
+  colors,
+  header_colors,
+} from "../../../utils/pharmacies_list";
 import SectionMiniHeader from "../../general/SectionMiniHeader";
 import Table from "../../Table/Table";
 import PaginationComponent from "../../pagination/PaginationComponent";
@@ -33,6 +38,7 @@ export default function Pharmacies_list() {
             type="Admin-Pharmacies_List"
           />
           <Table
+            head_colors={header_colors}
             data={currentUsers}
             columns={columns}
             colors={colors}

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Login from "../../admin-screens/auth/Login";
+
 import { useDispatch, useSelector } from "react-redux";
 import {
   BrowserRouter as Router,
@@ -7,22 +7,28 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import AppRouter from "./AppRouter";
+import AdminAppRouter from "./AdminAppRouter";
 import PrivateRouter from "../route/PrivateRouter";
 import { userUpdate } from "../../store/UserSlice";
+import FranchiseeAppRouter from "./FranchiseeAppRouter";
+import PharmacyAppRouter from "./PharmacyAppRouter";
+import Login from "../../auth/Login";
 
 export default function MainRouter() {
   const { is_verifiyed } = useSelector((state) => state.userdata || {});
   const dispatch = useDispatch();
+
   useEffect(() => {
     // Fetch token for regular user
     const userToken = localStorage.getItem("token");
+
     if (userToken) {
       // Update user authentication status in Redux
       dispatch(userUpdate({ is_verifiyed: !!userToken }));
     }
   }, [dispatch]);
 
+  const userToken = localStorage.getItem("token");
   return (
     <Router>
       <Routes>
@@ -32,7 +38,13 @@ export default function MainRouter() {
             path="/*"
             element={
               <PrivateRouter>
-                <AppRouter />
+                {userToken == "acess-token-admin" ? (
+                  <AdminAppRouter />
+                ) : userToken == "acess-token-franchisee" ? (
+                  <FranchiseeAppRouter />
+                ) : (
+                  <PharmacyAppRouter />
+                )}
               </PrivateRouter>
             }
           />

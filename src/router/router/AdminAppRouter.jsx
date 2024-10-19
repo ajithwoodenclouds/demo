@@ -12,8 +12,10 @@ import DriversOneSection from "../../components/sub_section/admin_sub_section/Dr
 import Account from "../../admin-screens/accounts/Account";
 import DuesList from "../../components/sub_section/admin_sub_section/DuesList";
 import DueOneSection from "../../components/sub_section/admin_sub_section/DueOneSection";
+import Users from "../../admin-screens/users/Users";
+import Subscription from "../../admin-screens/subscription/Subscription";
 
-const AppRouter = () => {
+const AdminAppRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -27,8 +29,10 @@ const AppRouter = () => {
       <Route path="/accounts" element={<Account />} />
       <Route path="/due-list" element={<DuesList />} />
       <Route path="/due-list/:id" element={<DueOneSection />} />
+      <Route path="/users" element={<Users />} />
+      <Route path="/subscription" element={<Subscription />} />
     </Routes>
   );
 };
 
-export default AppRouter;
+export default AdminAppRouter;

@@ -4,6 +4,7 @@ import { data, colors, columns } from "../../../utils/Pharmacy_wise_orders.JS";
 import PaginationComponent from "../../pagination/PaginationComponent";
 import Table from "../../Table/Table";
 import SubBox from "../../filtter_box/SubBox";
+import { headers_color } from "../../../utils/Pharmacy_wise_orders.JS";
 
 export default function PharmacyWiseOrderssection() {
   const [selectedDate, setSelectedDate] = useState("Today");
@@ -35,6 +36,7 @@ export default function PharmacyWiseOrderssection() {
         columns={columns}
         colors={colors}
         link={false}
+        head_colors={headers_color}
         onRowClick={(item, rowIndex, { openModal }) => {
           openModal(
             `Details for ${item.Sno}`,

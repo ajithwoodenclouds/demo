@@ -3,7 +3,12 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { userUpdate } from "../../store/UserSlice";
 
-const Header = ({ pervious = "", current = "" }) => {
+const Header = ({
+  pervious = "",
+  current = "",
+  franchisee = false,
+  pharmacy = false,
+}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleClick = () => {
@@ -21,9 +26,23 @@ const Header = ({ pervious = "", current = "" }) => {
       </div>
 
       {/* Right side */}
-      <div className="flex items-center space-x-4" onClick={handleClick}>
-        <img src="/image/profile.svg" alt="profile" />
-        <h1 className="text-[18px] text-[#1C1C1C]">Admin</h1>
+      <div className="flex items-center gap-3">
+        {franchisee && (
+          <div className="flex justify-center gap-1 cursor-pointer rounded-[8px] items-center w-[101px] h-[32px] py-[6px] px-[16px]  bg-[#0E3281]">
+            <img src="/image/add_white_icon.svg" alt="icon" />
+            <h1 className="text-[14px] font-[400] font-interRegular text-[#FFFFFF]">
+              Create
+            </h1>
+          </div>
+        )}
+
+        <div
+          className="flex items-center gap-3 cursor-pointer"
+          onClick={handleClick}
+        >
+          <img src="/image/profile.svg" alt="profile" />
+          <h1 className="text-[18px] text-[#1C1C1C]">Admin</h1>
+        </div>
       </div>
     </header>
   );

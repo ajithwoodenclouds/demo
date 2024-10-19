@@ -44,6 +44,7 @@ export default function Franchisee() {
             handlClick={setIsModalOpen}
           />
           <Table
+            action={true}
             data={currentUsers}
             columns={columns}
             colors={colors}
@@ -54,8 +55,8 @@ export default function Franchisee() {
                 `${item["Franchisee Name"]}, Total Orders: ${item["Total Orders"]}`
               );
             }}
-            type="Admin-Franchisee"
             modalComponent={SubBox}
+            type="Admin-Franchisee"
             path="/franchisee"
           />
 
