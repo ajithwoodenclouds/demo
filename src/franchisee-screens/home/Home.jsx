@@ -1,8 +1,11 @@
 import React from "react";
 import Sidebar from "../../components/general/Sidebar";
 import Header from "../../components/general/Header";
-import CustomBoxes from "../../components/cards/CustomBoxes";
-import { admin_home_data } from "../../utils/home_card_data";
+import { franchisee_home_data } from "../../utils/home_card_data";
+import FranchiseCustomBox from "../../components/cards/FranchiseCustomBox";
+import GraphSection from "../../components/sub_section/admin_sub_section/GraphSection";
+import PharmacyWiseOrderssection from "../../components/sub_section/franchisee_sub_section/PharmacyWiseOrderssection";
+import PresentDrivers from "../../components/general/PresentDrivers";
 
 export default function Home() {
   return (
@@ -11,7 +14,16 @@ export default function Home() {
         <Sidebar franchisee={true} />
         <div className="w-full">
           <Header current="Home" franchisee={true} />
-          <CustomBoxes data={admin_home_data} />
+          <FranchiseCustomBox data={franchisee_home_data} />
+          <GraphSection type="frachisee-home" />
+          <div className="flex justify-between items-stretch h-auto">
+            <div className="flex-1">
+              <PharmacyWiseOrderssection />
+            </div>
+            <div>
+              <PresentDrivers />
+            </div>
+          </div>
         </div>
       </div>
     </div>

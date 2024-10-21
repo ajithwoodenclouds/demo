@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   BrowserRouter as Router,
@@ -15,42 +14,53 @@ import PharmacyAppRouter from "./PharmacyAppRouter";
 import Login from "../../auth/Login";
 
 export default function MainRouter() {
+  const [loading, setLoading] = useState(true);
   const { is_verifiyed } = useSelector((state) => state.userdata || {});
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // Fetch token for regular user
     const userToken = localStorage.getItem("token");
 
-    if (userToken) {
-      // Update user authentication status in Redux
-      dispatch(userUpdate({ is_verifiyed: !!userToken }));
-    }
+    // Check if token exists and update the Redux state
+    dispatch(userUpdate({ is_verifiyed: Boolean(userToken) }));
+    setLoading(false); // End loading after token check
   }, [dispatch]);
 
-  const userToken = localStorage.getItem("token");
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        {/* Optional: Add a spinner or loading animation */}
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
   return (
     <Router>
       <Routes>
-        {/* Conditional routing based on user authentication */}
-        {is_verifiyed ? (
-          <Route
-            path="/*"
-            element={
-              <PrivateRouter>
-                {userToken == "acess-token-admin" ? (
-                  <AdminAppRouter />
-                ) : userToken == "acess-token-franchisee" ? (
-                  <FranchiseeAppRouter />
-                ) : (
-                  <PharmacyAppRouter />
-                )}
-              </PrivateRouter>
-            }
-          />
-        ) : (
+        {!is_verifiyed ? (
           <>
             <Route path="/login" element={<Login />} />
+            <Route path="*" element={<Navigate to="/login" />} />
+          </>
+        ) : (
+          <>
+            <Route path="/login" element={<Navigate to="/" />} />
+            <Route
+              path="/*"
+              element={
+                <PrivateRouter>
+                  {localStorage.getItem("token") === "acess-token-admin" ? (
+                    <AdminAppRouter />
+                  ) : localStorage.getItem("token") ===
+                    "acess-token-franchisee" ? (
+                    <FranchiseeAppRouter />
+                  ) : (
+                    <PharmacyAppRouter />
+                  )}
+                </PrivateRouter>
+              }
+            />
           </>
         )}
       </Routes>

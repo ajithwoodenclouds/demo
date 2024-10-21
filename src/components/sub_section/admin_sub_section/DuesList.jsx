@@ -45,7 +45,9 @@ export default function DuesList() {
         <div className="w-full">
           <Header pervious="Accounts / " current="Due list" />
           <div className="flex justify-between text-[#0A0A0A] px-4 pt-4 text-[18px] font-interRegular font-[400]">
-            <h3>Dues list</h3>
+            <h3 className="text-[18px] text-[#0A0A0A] font-interRegular font-[400]">
+              Dues list
+            </h3>
           </div>
           <DoubleDataTable
             data={currentUsers}

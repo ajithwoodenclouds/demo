@@ -12,7 +12,7 @@ const PaginationComponent = ({ totalPages, handlePageClick }) => {
       marginPagesDisplayed={2}
       pageRangeDisplayed={3}
       onPageChange={handlePageClick}
-      containerClassName={"flex justify-center items-center space-x-2 mt-4"}
+      containerClassName={"flex justify-center items-center space-x-2 "}
       pageClassName={
         "rounded-full border border-gray-300  text-[#0E3281] px-4 py-2 "
       }

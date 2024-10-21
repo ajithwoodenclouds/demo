@@ -22,14 +22,14 @@ const DateSelector = ({
     <div className="relative z-10">
       <button
         onClick={() => setOpen(!open)}
-        className={`flex items-center justify-between text-[16px] border w-[140px] rounded-[20px] px-4 ${color} py-2`}
+        className={`flex items-center justify-center text-[16px] border w-fit rounded-[20px] px-4 ${color} py-2`}
       >
         <span>{selectedDate}</span>
-        {open ? (
+        {/* {open ? (
           <FiChevronUp className="text-[21px]" />
         ) : (
           <FiChevronDown className="text-[21px]" />
-        )}
+        )} */}
       </button>
       {open && (
         <div className="absolute mt-2 w-fit ml-[-150%] p-[20px] items-center bg-white border border-gray-300 rounded-md shadow-lg">

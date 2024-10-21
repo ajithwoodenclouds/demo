@@ -4,14 +4,16 @@ import {
   processedData,
   colors,
   columns,
-} from "../../../utils/Pharmacy_wise_orders.JS";
+} from "../../../utils/admin-recent-orders";
 import PaginationComponent from "../../pagination/PaginationComponent";
-import { head_colors } from "../../../utils/formUsers";
 import DoubleDataTable from "../../Table/DoubleDataTable";
+import DetailsModal from "../../modal/DetailsModal";
 
-export default function PharmacyWiseOrderssection() {
+export default function RecentOrdersSection() {
   const [selectedDate, setSelectedDate] = useState("Today");
   const [currentPage, setCurrentPage] = useState(0);
+  const [isModalOpen, setModalOpen] = useState(false); // Modal open state
+  const [modalData, setModalData] = useState(null); // Modal data state
   const itemsPerPage = 5;
 
   // Calculate the total number of pages
@@ -28,25 +30,40 @@ export default function PharmacyWiseOrderssection() {
     startIndex + itemsPerPage
   );
 
+  // Open modal when a row is clicked
+  const handleOpenModal = (data) => {
+    setModalData(data); // Pass the clicked row data to the modal
+    setModalOpen(true); // Open the modal
+  };
+
+  // Close modal function
+  const handleCloseModal = () => {
+    setModalOpen(false); // Close the modal
+  };
+
   return (
     <div>
-      <div className="flex justify-between text-[#0A0A0A]  px-4 pt-4 text-[18px] font-interRegular font-[400]">
+      <div className="flex justify-between text-[#0A0A0A] px-4 text-[18px] font-interRegular font-[400]">
         <h3 className="text-[18px] text-[#0A0A0A] font-interRegular font-[400]">
-          Pharmacy wise orders
+          Recent orders
         </h3>
         <DateSelector
           selectedDate={selectedDate}
           onSelectDate={setSelectedDate}
         />
       </div>
+
+      {/* Pass handleOpenModal to DoubleDataTable */}
       <DoubleDataTable
         data={currentUsers}
         columns={columns}
         colors={colors}
         link={false}
-        head_colors={head_colors}
-        type="Admin-FranchiseOrderSection"
+        type="Admin-Recent-Orders"
+        action={true}
+        onRowClick={handleOpenModal} // Handle row click to open modal
       />
+
       <div className="flex font-interRegular text-[#7B7B75] p-4 text-[12px] justify-between items-center">
         <h4>
           Showing {currentPage + 1} to {totalPages} of {processedData.length}{" "}
@@ -57,6 +74,15 @@ export default function PharmacyWiseOrderssection() {
           handlePageClick={handlePageClick}
         />
       </div>
+
+      {/* Include DetailsModal */}
+      {isModalOpen && modalData && (
+        <DetailsModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal} // Close modal handler
+          data={modalData} // Pass modal data to DetailsModal
+        />
+      )}
     </div>
   );
 }

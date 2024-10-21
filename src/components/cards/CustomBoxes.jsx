@@ -9,8 +9,8 @@ export default function CustomBoxes({
 }) {
   const navigate = useNavigate();
   const style_deafut = {
-    backgroundSize: "50%",
-    backgroundPosition: "100% 203%",
+    backgroundSize: "30%",
+    backgroundPosition: "100% -100px",
   };
 
   return (
@@ -34,7 +34,13 @@ export default function CustomBoxes({
                       backgroundPosition: "100% 203%, center", // Set positions for each background
                       backgroundRepeat: "no-repeat, no-repeat",
                     }
-                  : style_deafut
+                  : (style == "double") | !item.color
+                  ? style_deafut
+                  : (style = {
+                      backgroundSize: "50%, cover", // Use cover for both layers or adjust accordingly
+                      backgroundPosition: "100% 203%, center", // Set positions for each background
+                      backgroundRepeat: "no-repeat, no-repeat",
+                    })
               }
             >
               <div className="icon flex items-center justify-start container mb-4">
@@ -72,7 +78,7 @@ export default function CustomBoxes({
                         !item.color ? " text-[#41DD75]" : "text-[#1C1C1C]"
                       } `}
                     >
-                      {item.amount}
+                      {item.recive_amount}
                     </h3>
                     <span className={`text-[#fff] font-[400] text-[12px]`}>
                       {item.amount_des1}

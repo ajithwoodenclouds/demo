@@ -29,8 +29,8 @@ export default function PharmacyWiseOrderssection() {
   );
 
   return (
-    <div>
-      <div className="flex justify-between text-[#0A0A0A]  px-4 pt-4 text-[18px] font-interRegular font-[400]">
+    <div className="w-full">
+      <div className="flex justify-between text-[#0A0A0A] items-center  px-4 pt-4 text-[18px] font-interRegular font-[400]">
         <h3 className="text-[18px] text-[#0A0A0A] font-interRegular font-[400]">
           Pharmacy wise orders
         </h3>
@@ -47,7 +47,7 @@ export default function PharmacyWiseOrderssection() {
         head_colors={head_colors}
         type="Admin-FranchiseOrderSection"
       />
-      <div className="flex font-interRegular text-[#7B7B75] p-4 text-[12px] justify-between items-center">
+      <div className="flex font-interRegular text-[#7B7B75] px-4 text-[12px] justify-between items-center">
         <h4>
           Showing {currentPage + 1} to {totalPages} of {processedData.length}{" "}
           data

@@ -1,7 +1,8 @@
 export const data = [
   {
     Sno: "01",
-    "Pharmacy name": "MediFast Delivery",
+    name: "MediFast Delivery",
+    Pharmacy_id: "#82921433423",
     "Total Orders": 156,
     Delivered: 142,
     Attempted: 23,
@@ -10,7 +11,8 @@ export const data = [
   },
   {
     Sno: "02",
-    "Pharmacy name": "QuickMedic",
+    name: "QuickMedic",
+    Pharmacy_id: "#82921433423",
     "Total Orders": 180,
     Delivered: 160,
     Attempted: 18,
@@ -19,7 +21,8 @@ export const data = [
   },
   {
     Sno: "03",
-    "Pharmacy name": "QuickMedic",
+    name: "QuickMedic",
+    Pharmacy_id: "#82921433423",
     "Total Orders": 200,
     Delivered: 180,
     Attempted: 20,
@@ -28,8 +31,10 @@ export const data = [
   },
   {
     Sno: "04",
-    "Pharmacy name": "HealthCourier",
+    name: "HealthCourier",
+    Pharmacy_id: "#82921433423",
     "Total Orders": 220,
+
     Delivered: 200,
     Attempted: 25,
     Pending: 5,
@@ -37,7 +42,8 @@ export const data = [
   },
   {
     Sno: "05",
-    "Pharmacy name": "MediExpress",
+    name: "MediExpress",
+    Pharmacy_id: "#82921433423",
     "Total Orders": 240,
     Delivered: 220,
     Attempted: 30,
@@ -46,7 +52,8 @@ export const data = [
   },
   {
     Sno: "06",
-    "Pharmacy name": "PharmaSwift",
+    name: "PharmaSwift",
+    Pharmacy_id: "#82921433423",
     "Total Orders": 260,
     Delivered: 240,
     Attempted: 35,
@@ -55,7 +62,8 @@ export const data = [
   },
   {
     Sno: "07",
-    "Pharmacy name": "MediFast Delivery",
+    name: "MediFast Delivery",
+    Pharmacy_id: "#82921433423",
     "Total Orders": 280,
     Delivered: 260,
     Attempted: 40,
@@ -64,7 +72,8 @@ export const data = [
   },
   {
     Sno: "08",
-    "Pharmacy name": "QuickMedic",
+    name: "QuickMedic",
+    Pharmacy_id: "#82921433423",
     "Total Orders": 300,
     Delivered: 280,
     Attempted: 45,
@@ -72,10 +81,14 @@ export const data = [
     Cancelled: 20,
   },
 ];
+export const processedData = data.map((item) => ({
+  ...item,
+  Pharmacy_name: [item.name, item.Pharmacy_id],
+}));
 
 export const columns = [
   { header: "Sno", accessor: "Sno" },
-  { header: "Pharmacy name", accessor: "Pharmacy name" },
+  { header: "Pharmacy name", accessor: "Pharmacy_name" },
   { header: "Total Orders", accessor: "Total Orders" },
   { header: "Delivered", accessor: "Delivered" },
   { header: "Attempted", accessor: "Attempted" },

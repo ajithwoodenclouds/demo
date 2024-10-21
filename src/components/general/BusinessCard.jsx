@@ -6,7 +6,7 @@ import {
   due_list_One_admin_data,
 } from "../../utils/home_card_data";
 
-const BusinessCard = ({ data, title = "", type = "" }) => {
+const BusinessCard = ({ data, title = "", type = "", franchisee = false }) => {
   return (
     <div className="container p-4 mx-auto font-interRegular">
       <div className="bg-white py-[40px] px-[32px] grid grid-cols-1  rounded-[16px] h-full">
@@ -68,10 +68,13 @@ const BusinessCard = ({ data, title = "", type = "" }) => {
 
           {/* Action Button */}
           {title === "Pharmacy 01" && (
-            <div className="flex items-center space-x-4">
-              <h3 className="font-[500] font-interSemibold text-[16px] text-[#269149]">
-                Basic plan
-              </h3>
+            <div className="flex items-center ">
+              {!franchisee && (
+                <h3 className="font-[500] font-interSemibold text-[16px] text-[#269149]">
+                  Basic plan
+                </h3>
+              )}
+
               <MiniButton title="Active" />
             </div>
           )}

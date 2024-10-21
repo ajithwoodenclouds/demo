@@ -2,7 +2,10 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
-export default function PrivateRouter({ children }) {
-  const data = useSelector((state) => state.userdata);
-  return data.is_verifiyed ? children : <Navigate to="/" replace />;
-}
+const PrivateRouter = ({ children }) => {
+  const { is_verifiyed } = useSelector((state) => state.userdata);
+
+  return is_verifiyed ? children : <Navigate to="/login" replace />;
+};
+
+export default PrivateRouter;

@@ -1,8 +1,18 @@
 import React from "react";
 
-export default function FilterActions({ openModal }) {
+export default function FilterActions({ openModal, franchisee = flase }) {
   return (
     <div className="flex items-center gap-4">
+      {franchisee && (
+        <div
+          className="flex items-center gap-2 cursor-pointer"
+          onClick={() => openModal(true)}
+        >
+          <img src="/image/add_icon.svg" alt="Add Icon" />
+          <h3 className="text-[16px] font-interRegular">Create</h3>
+        </div>
+      )}
+
       <div className="flex items-center space-x-2">
         <div className="relative">
           <input
@@ -21,7 +31,7 @@ export default function FilterActions({ openModal }) {
         className="flex items-center gap-2 cursor-pointer"
         onClick={() => openModal(true)}
       >
-        <img src="/image/filter_icon.svg" alt="Add Icon" className="w-[30px]" />
+        <img src="/image/filter_icon.svg" alt="Add Icon" />
         <h3 className="text-[16px] font-interRegular">Filter</h3>
       </div>
     </div>

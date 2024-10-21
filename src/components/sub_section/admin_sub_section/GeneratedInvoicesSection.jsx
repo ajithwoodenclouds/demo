@@ -43,7 +43,9 @@ export default function GeneratedInvoicesSection() {
   return (
     <div>
       <div className="flex justify-between text-[#0A0A0A] p-4 text-[18px] font-interRegular font-[400]">
-        <h3>Generated invoices</h3>
+        <h3 className="text-[18px] text-[#0A0A0A] font-interRegular font-[400]">
+          Generated invoices
+        </h3>
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-3">
             <img src="/image/blue_add_icon.svg" alt="icon" />

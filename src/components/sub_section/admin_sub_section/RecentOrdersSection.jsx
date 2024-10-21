@@ -44,7 +44,9 @@ export default function RecentOrdersSection() {
   return (
     <div>
       <div className="flex justify-between text-[#0A0A0A] p-4 text-[18px] font-interRegular font-[400]">
-        <h3>Recent orders</h3>
+        <h3 className="text-[18px] text-[#0A0A0A] font-interRegular font-[400]">
+          Recent orders
+        </h3>
         <DateSelector
           selectedDate={selectedDate}
           onSelectDate={setSelectedDate}

@@ -42,7 +42,9 @@ export default function DriverRecentActivities() {
   return (
     <div>
       <div className="flex justify-between text-[#0A0A0A] p-4 text-[18px] font-interRegular font-[400]">
-        <h3>Recent activities</h3>
+        <h3 className="text-[18px] text-[#0A0A0A] font-interRegular font-[400]">
+          Recent activities
+        </h3>
       </div>
 
       {/* Pass handleOpenModal to DoubleDataTable */}

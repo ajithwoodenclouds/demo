@@ -21,9 +21,9 @@ export default function DoubleCard({
           return (
             <div
               key={item.id}
-              className={`flex  ${item.bg_color}  bg-[url('/image/card_bg.svg')] bg-cover bg-no-repeat items-left py-[24px] p-[32px] h-[148px] rounded-[16px] shadow-md`}
+              className={`flex  ${item.color}  bg-[url('/image/card_bg.svg')] bg-cover bg-no-repeat items-left py-[24px] p-[32px] h-[148px] rounded-[16px] shadow-md`}
               style={
-                !item.bg_color
+                !item.color
                   ? {
                       backgroundImage:
                         "url('/image/card_bg.svg'), linear-gradient(192.82deg, #424953 5.95%, #1C1C1C 94.05%)",
@@ -40,10 +40,10 @@ export default function DoubleCard({
                   className={`text-[16px] text-[${item.text_color}] font-interRegular`}
                 >
                   {item.title}
-                  {item.bg_color && type === "Admin-Accounts" && (
+                  {item.color && type === "Admin-Accounts" && (
                     <h3
                       className={`text-[24px] font-interSemibold ${
-                        !item.bg_color ? "text-[#41DD75]" : "text-[#1C1C1C]"
+                        !item.color ? "text-[#41DD75]" : "text-[#1C1C1C]"
                       }`}
                     >
                       {item.amount}
@@ -53,10 +53,10 @@ export default function DoubleCard({
               </div>
               <div className="flex items-center justify-between">
                 <div>
-                  {!item.bg_color && type === "Admin-Accounts" && (
+                  {!item.color && type === "Admin-Accounts" && (
                     <h3
                       className={`text-[24px] font-interSemibold ${
-                        !item.bg_color ? "text-[#41DD75]" : "text-[#1C1C1C]"
+                        !item.color ? "text-[#41DD75]" : "text-[#1C1C1C]"
                       }`}
                     >
                       {item.amount}

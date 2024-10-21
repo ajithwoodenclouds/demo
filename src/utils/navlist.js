@@ -87,14 +87,14 @@ export const franchisee_menuItems = [
     title: "Orders",
     icon: "/image/order_icon.svg",
     light_icon: "image/order_light_icon.svg",
-    // path: "/orders",
+    path: "/orders",
   },
   {
     id: 3,
     title: "Pharmacies",
     icon: "/image/hospital_icon.svg",
     light_icon: "image/hospital_light_icon.svg",
-    // path: "/pharmacies",
+    path: "/pharmacies",
   },
   {
     id: 4,

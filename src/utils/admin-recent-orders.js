@@ -2,8 +2,8 @@ export const data = [
   {
     sl_no: 121433422,
     order_id: "MediCare Pharmacy",
-    created_date: "Trinity Medicare & Pharmaceuticals",
-    order_type: "123-456-7890",
+    created_date: "12/10/24",
+    order_type: "Delivery",
     assigned_driver_image: "/image/driver_image.svg",
     assigned_driver_name: "James Gonsalves",
     Status: "Out for delivery",
@@ -11,8 +11,8 @@ export const data = [
   {
     sl_no: 121433422,
     order_id: "MediCare Pharmacy",
-    created_date: "Trinity Medicare & Pharmaceuticals",
-    order_type: "123-456-7890",
+    created_date: "12/10/24",
+    order_type: "Delivery",
     assigned_driver_image: "/image/driver_image.svg",
     assigned_driver_name: "James Gonsalves",
     Status: "Out for delivery",
@@ -20,8 +20,8 @@ export const data = [
   {
     sl_no: 121433422,
     order_id: "MediCare Pharmacy",
-    created_date: "Trinity Medicare & Pharmaceuticals",
-    order_type: "123-456-7890",
+    created_date: "12/10/24",
+    order_type: "Delivery",
     assigned_driver_image: "/image/driver_image.svg",
     assigned_driver_name: "James Gonsalves",
     assigned_driver: "Not assigned",
@@ -31,8 +31,8 @@ export const data = [
   {
     sl_no: 121433422,
     order_id: "MediCare Pharmacy",
-    created_date: "Trinity Medicare & Pharmaceuticals",
-    order_type: "123-456-7890",
+    created_date: "12/10/24",
+    order_type: "Delivery",
     assigned_driver_image: "/image/driver_image.svg",
     assigned_driver_name: "James Gonsalves",
     assigned_driver: "Not assigned",
