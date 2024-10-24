@@ -22,8 +22,9 @@ const DateSelector = ({
     <div className="relative z-10">
       <button
         onClick={() => setOpen(!open)}
-        className={`flex items-center justify-center text-[16px] border w-fit rounded-[20px] px-4 ${color} py-2`}
+        className={`flex items-center justify-center text-[16px] border w-max rounded-[20px] px-4 ${color} `}
       >
+        <img src="/image/date_icon.svg" alt="icon" className="w-5 h-10" />
         <span>{selectedDate}</span>
         {/* {open ? (
           <FiChevronUp className="text-[21px]" />
@@ -32,7 +33,7 @@ const DateSelector = ({
         )} */}
       </button>
       {open && (
-        <div className="absolute mt-2 w-fit ml-[-150%] p-[20px] items-center bg-white border border-gray-300 rounded-md shadow-lg">
+        <div className="absolute mt-2 w-fit ml-[-170%] p-[20px] items-center bg-white border border-gray-300 rounded-md shadow-lg">
           {DateOptions.map((date) => (
             <div
               key={date}

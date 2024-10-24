@@ -5,9 +5,11 @@ import SectionMiniHeader from "../../general/SectionMiniHeader";
 import PaginationComponent from "../../pagination/PaginationComponent";
 import { columns, processedData, colors } from "../../../utils/drivers_list";
 import DoubleDataTable from "../../Table/DoubleDataTable";
+import CreateDrivers from "../../form/CreateDrivers";
 
 export default function DriversList() {
   const [currentPage, setCurrentPage] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const itemsPerPage = 5;
 
@@ -22,17 +24,24 @@ export default function DriversList() {
     startIndex,
     startIndex + itemsPerPage
   );
-
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   return (
     <div className="bg-[#F5F7FA] w-full">
       <div className="flex w-full justify-between">
-        <Sidebar />
+        <Sidebar franchisee={true} />
         <div className="w-full">
           <Header
+            franchisee={true}
             pervious="Franchisees / Franchisees One /"
             current="Drivers"
           />
-          <SectionMiniHeader title="Drivers list" type="Admin-Drivers list" />
+          <SectionMiniHeader
+            title="Drivers list"
+            type="Franchisee-Drivers list"
+            handlCreate={setIsModalOpen}
+          />
           <DoubleDataTable
             data={currentUsers}
             columns={columns}
@@ -50,6 +59,9 @@ export default function DriversList() {
               handlePageClick={handlePageClick}
             />
           </div>
+          {isModalOpen && (
+            <CreateDrivers closeModal={closeModal} isOpen={isModalOpen} />
+          )}
         </div>
       </div>
     </div>

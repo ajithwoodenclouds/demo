@@ -19,7 +19,7 @@ const PaginationComponent = ({ totalPages, handlePageClick }) => {
       activeClassName={"bg-[#0E3281]  text-[#fff] "}
       nextClassName={"text-[20px] text-[#363636]"}
       previousClassName={"text-[20px] text-[#363636]"}
-      breakClassName={"px-2 py-2"}
+      breakClassName={"px-2 py-3"}
       disabledClassName={"opacity-50 cursor-not-allowed"}
     />
   );

@@ -102,9 +102,9 @@ export const franchisee_menuItems = [
     icon: "/image/drive_icon.svg",
     light_icon: "image/drive_light_icon.svg",
     sub: [
-      { id: 1, title: "Drivers list", path: "/drive-list" },
-      { id: 2, title: "Attendance", path: "/drive-list" },
-      { id: 3, title: "Requests", path: "/drive-list" },
+      { id: 1, title: "Drivers list", path: "/drivers" },
+      { id: 2, title: "Attendance", path: "/attendance" },
+      { id: 3, title: "Requests", path: "/requests" },
       { id: 4, title: "Track", path: "/drive-list" },
     ],
     // path: "/drives",

@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import CustomButton from "../buttons/CustomButton";
 import SearchMapComponent from "../Map/SerachMapComponent";
+import ImageUpload from "../input/ImageUpload";
 
-const CreateFranchisee = ({ closeModal, isOpen }) => {
+const CreateDrivers = ({ closeModal, isOpen }) => {
   const [step, setStep] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [showModal, setShowModal] = useState(false);
 
   const nextStep = () => {
-    if (step < 3) setStep(step + 1);
+    if (step < 2) setStep(step + 1);
   };
 
   const prevStep = () => {
@@ -49,18 +50,21 @@ const CreateFranchisee = ({ closeModal, isOpen }) => {
         }`}
       >
         <div className="bg-white px-[180px] py-[72px] rounded-lg shadow-lg w-full h-fit relative">
-          <div className="flex gap-3 mb-[30px]">
-            <img src="/image/franchisee_icon.svg" alt="icon" />
+          <div className="flex gap-3 mb-[25px]">
+            <img src="/image/drive_icon.svg" alt="icon" />
             <h2 className="text-[#212529] text-[20px] font-[500] font-interSemibold">
-              Create franchisee
+              Create driver
             </h2>
           </div>
 
           {step === 1 && (
             <div className="flex flex-col justify-end">
-              <h4 className="mb-[50px] text-[#212529] text-[16px] font-interSemibold">
-                1/3 Basic details
+              <h4 className="mb-[25px] text-[#212529] text-[16px] font-interSemibold">
+                <span className="text-[24px]">1</span>{" "}
+                <span className="text-[16px] text-[#67696A]">/3 </span> Basic
+                details
               </h4>
+              <ImageUpload />
               <form className="grid grid-cols-2 gap-10">
                 <div>
                   <label
@@ -72,7 +76,7 @@ const CreateFranchisee = ({ closeModal, isOpen }) => {
                   <input
                     id="Name"
                     type="text"
-                    placeholder="Enter franchisee name"
+                    placeholder="Enter driver’s name"
                     className="w-full border-b-2 placeholder:text-[16px] border-[#C9D2DB] focus:border-blue-500 outline-none"
                   />
                 </div>
@@ -87,7 +91,7 @@ const CreateFranchisee = ({ closeModal, isOpen }) => {
                   <input
                     id="email"
                     type="email"
-                    placeholder="Enter franchisee email id"
+                    placeholder="Enter email id"
                     className="w-full border-b-2 placeholder:text-[16px]  border-[#C9D2DB] focus:border-blue-500 outline-none"
                   />
                 </div>
@@ -102,67 +106,52 @@ const CreateFranchisee = ({ closeModal, isOpen }) => {
                   <input
                     id="phone"
                     type="tel"
-                    placeholder="Enter franchisee phone no"
+                    placeholder="Enter driver’s phone no"
                     className="w-full border-b-2 placeholder:text-[16px] border-[#C9D2DB] focus:border-blue-500 outline-none"
                   />
                 </div>
 
                 <div>
                   <label
-                    htmlFor="companyName"
+                    htmlFor="Drivinglicense "
                     className="block font-interRegular mb-[10px] font-[400] text-[16px] text-[#6A7683]"
                   >
-                    Company Name
+                    Driving license
                   </label>
                   <input
-                    id="companyName"
+                    id="Drivinglicense"
                     type="text"
-                    placeholder="Enter company name"
+                    placeholder="Enter driving license no "
                     className="w-full border-b-2 placeholder:text-[16px] border-[#C9D2DB] focus:border-blue-500 outline-none"
                   />
                 </div>
 
                 <div>
                   <label
-                    htmlFor="companyRegNo"
+                    htmlFor="licensePlateNumber"
                     className="block font-interRegular mb-[10px] font-[400] text-[16px] text-[#6A7683]"
                   >
-                    Company Reg No.
+                    License plate number
                   </label>
                   <input
-                    id="companyRegNo"
+                    id="licensePlateNumber"
                     type="text"
-                    placeholder="Enter company reg no"
+                    placeholder="Enter license plate no"
                     className="w-full border-b-2 placeholder:text-[16px] border-[#C9D2DB] focus:border-blue-500 outline-none"
                   />
                 </div>
 
                 <div>
                   <label
-                    htmlFor="commission"
+                    htmlFor="sinNumber"
                     className="block font-interRegular mb-[10px] font-[400] text-[16px] text-[#6A7683]"
                   >
-                    Commission
+                    SIN number
                   </label>
                   <input
-                    id="commission"
+                    id="sinNumber"
                     type="text"
-                    placeholder="Enter commission percentage"
-                    className="w-full border-b-2 placeholder:text-[16px] border-[#C9D2DB] focus:border-blue-500 outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="hst"
-                    className="block font-interRegular mb-[10px] font-[400] text-[16px] text-[#6A7683]"
-                  >
-                    HST
-                  </label>
-                  <input
-                    id="hst"
-                    type="text"
-                    placeholder="Enter HST (in percentage)"
+                    placeholder="Enter SIN number"
                     className="w-full border-b-2 placeholder:text-[16px] border-[#C9D2DB] focus:border-blue-500 outline-none"
                   />
                 </div>
@@ -185,65 +174,78 @@ const CreateFranchisee = ({ closeModal, isOpen }) => {
           {/* Step 2 */}
           {step === 2 && (
             <div className="flex flex-col">
-              <h4 className=" text-[#212529] text-[16px] font-interSemibold">
-                1/3 Basic details
+              <h4 className=" text-[#212529] mb-[25px] text-[16px] font-interSemibold">
+                <span className="text-[24px]">2</span>{" "}
+                <span className="text-[16px] text-[#67696A]">/2 </span>{" "}
+                Credential creation
               </h4>
-              {/* Map Section */}
-              <div className="w-full my-[20px]">
-                <SearchMapComponent />
-              </div>
 
-              {/* Form Section */}
               <form>
                 <div className=" grid grid-cols-2 gap-8">
                   <div>
                     <label
-                      className="block font-interRegular mb-[10px] text-[16px] text-[#6A7683]"
-                      htmlFor="province"
+                      htmlFor="firstName"
+                      className="block font-interRegular mb-[10px] font-[400] text-[16px] text-[#6A7683]"
                     >
-                      Province
+                      Name
                     </label>
                     <input
+                      id="Name"
                       type="text"
-                      id="province"
-                      placeholder="Enter Province"
-                      className="w-full border-b-2 placeholder:text-[16px]  border-[#C9D2DB] focus:border-blue-500 outline-none"
+                      placeholder="Enter driver’s name"
+                      className="w-full border-b-2 placeholder:text-[16px] border-[#C9D2DB] focus:border-blue-500 outline-none"
                     />
                   </div>
 
                   <div>
                     <label
-                      className="block font-interRegular mb-[10px] text-[16px] text-[#6A7683]"
-                      htmlFor="city"
+                      htmlFor="Emailid"
+                      className="block font-interRegular mb-[10px] font-[400] text-[16px] text-[#6A7683]"
                     >
-                      City
+                      Email id
                     </label>
                     <input
+                      id="Emailid"
                       type="text"
-                      id="city"
-                      placeholder="Enter City"
-                      className="w-full border-b-2 placeholder:text-[16px]  border-[#C9D2DB] focus:border-blue-500 outline-none"
+                      placeholder="Enter franchisee email id"
+                      className="w-full border-b-2 placeholder:text-[16px] border-[#C9D2DB] focus:border-blue-500 outline-none"
                     />
                   </div>
 
                   <div>
                     <label
+                      htmlFor="password"
                       className="block font-interRegular mb-[10px] text-[16px] text-[#6A7683]"
-                      htmlFor="zipcode"
                     >
-                      Zip Code
+                      Password
                     </label>
                     <input
-                      type="text"
-                      id="zipcode"
-                      placeholder="Enter Zip Code"
-                      className="w-full border-b-2 placeholder:text-[16px]  border-[#C9D2DB] focus:border-blue-500 outline-none"
+                      id="password"
+                      type="password"
+                      placeholder="Create a password "
+                      className="w-full border-b-2 placeholder:text-[16px] border-[#C9D2DB] focus:border-blue-500 outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="confirmPassword"
+                      className="block font-interRegular mb-[10px] text-[16px] text-[#6A7683]"
+                    >
+                      Confirm Password
+                    </label>
+
+                    <input
+                      id="confirmPassword"
+                      type="password"
+                      placeholder="Re-enter the password"
+                      className="w-full border-b-2 placeholder:text-[16px] border-[#C9D2DB] focus:border-blue-500 outline-none"
                     />
                   </div>
                 </div>
 
                 {/* Navigation Buttons */}
-                <div className="flex justify-end gap-5">
+                <div className="flex justify-end mt-[25px] gap-5">
                   <CustomButton
                     onClick={prevStep}
                     style="border border-[#0E3281] text-[#0E3281] w-[200px] h-[48px] py-[10px] px-[24px] rounded"
@@ -253,93 +255,10 @@ const CreateFranchisee = ({ closeModal, isOpen }) => {
                   <CustomButton
                     onClick={nextStep}
                     style=" bg-[#0E3281] text-[#fff] w-[200px] h-[48px] py-[10px] px-[24px] rounded"
-                    text="Next"
+                    text="Submit"
                   />
                 </div>
               </form>
-            </div>
-          )}
-
-          {/* Step 3 */}
-          {step === 3 && (
-            <div className="flex flex-col justify-end">
-              <h4 className="mb-[50px] text-[#212529] text-[16px] font-interSemibold">
-                1/3 Basic details
-              </h4>
-              <form className="grid grid-cols-2 gap-10">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block font-interRegular mb-[10px] text-[16px] text-[#6A7683]"
-                  >
-                    Name
-                  </label>
-                  <input
-                    id="name"
-                    type="text"
-                    placeholder="Enter franchisee name"
-                    className="w-full border-b-2 placeholder:text-[16px] border-[#C9D2DB] focus:border-blue-500 outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block font-interRegular mb-[10px] text-[16px] text-[#6A7683]"
-                  >
-                    Email Id
-                  </label>
-                  <input
-                    id="email"
-                    type="email"
-                    placeholder="Enter franchisee email id"
-                    className="w-full border-b-2 placeholder:text-[16px] border-[#C9D2DB] focus:border-blue-500 outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="password"
-                    className="block font-interRegular mb-[10px] text-[16px] text-[#6A7683]"
-                  >
-                    Password
-                  </label>
-                  <input
-                    id="password"
-                    type="password"
-                    placeholder="Create a password "
-                    className="w-full border-b-2 placeholder:text-[16px] border-[#C9D2DB] focus:border-blue-500 outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="confirmPassword"
-                    className="block font-interRegular mb-[10px] text-[16px] text-[#6A7683]"
-                  >
-                    Confirm Password
-                  </label>
-
-                  <input
-                    id="confirmPassword"
-                    type="password"
-                    placeholder="Re-enter the password"
-                    className="w-full border-b-2 placeholder:text-[16px] border-[#C9D2DB] focus:border-blue-500 outline-none"
-                  />
-                </div>
-              </form>
-              <div className="flex mt-[50px] justify-end gap-5">
-                <CustomButton
-                  onClick={prevStep}
-                  style="border border-[#0E3281] text-[#0E3281] w-[200px] h-[48px] py-[10px] px-[24px] rounded"
-                  text="Back"
-                />
-                <CustomButton
-                  onClick={nextStep}
-                  style="bg-[#0E3281] text-[#fff] w-[200px] h-[48px] py-[10px] px-[24px] rounded"
-                  text="Submit"
-                />
-              </div>
             </div>
           )}
 
@@ -358,12 +277,6 @@ const CreateFranchisee = ({ closeModal, isOpen }) => {
                   step >= 2 ? "bg-[#3AAC43]" : "bg-[#C9D2DB]"
                 }`}
               ></div>
-              {/* Line 3 */}
-              <div
-                className={`h-1 w-full ${
-                  step >= 3 ? "bg-[#3AAC43]" : "bg-[#C9D2DB]"
-                }`}
-              ></div>
             </div>
           </div>
         </div>
@@ -372,4 +285,4 @@ const CreateFranchisee = ({ closeModal, isOpen }) => {
   );
 };
 
-export default CreateFranchisee;
+export default CreateDrivers;

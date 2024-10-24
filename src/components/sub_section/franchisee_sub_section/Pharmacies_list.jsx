@@ -10,9 +10,11 @@ import {
 import SectionMiniHeader from "../../general/SectionMiniHeader";
 import Table from "../../Table/Table";
 import PaginationComponent from "../../pagination/PaginationComponent";
+import CreatePharmacy from "../../form/CreatePharmacy";
 
 export default function Pharmacies_list() {
   const [currentPage, setCurrentPage] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const itemsPerPage = 5;
 
@@ -22,6 +24,9 @@ export default function Pharmacies_list() {
     setCurrentPage(data.selected);
   };
 
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   const startIndex = currentPage * itemsPerPage;
   const currentUsers = data.slice(startIndex, startIndex + itemsPerPage);
   return (
@@ -38,6 +43,7 @@ export default function Pharmacies_list() {
             title="Pharmacies list"
             type="Admin-Pharmacies_List"
             franchisee={true}
+            handlCreate={setIsModalOpen}
           />
           <Table
             head_colors={header_colors}
@@ -57,6 +63,9 @@ export default function Pharmacies_list() {
               handlePageClick={handlePageClick}
             />
           </div>
+          {isModalOpen && (
+            <CreatePharmacy closeModal={closeModal} isOpen={isModalOpen} />
+          )}
         </div>
       </div>
     </div>

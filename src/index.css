@@ -39,3 +39,36 @@
 .react-datepicker-wrapper {
   width: 100%;
 }
+.leaflet-control-geosearch form {
+  display: block;
+}
+.leaflet-control-geosearch .leaflet-bar-part {
+  display: none;
+}
+.leaflet-control-geosearch form {
+  position: absolute;
+  left: 0;
+  border-radius: 8px;
+}
+.leaflet-touch .leaflet-control-geosearch button.reset {
+  display: none;
+}
+
+.leaflet-control-geosearch form input {
+  width: 100%;
+  border: 1px solid #ffffff;
+  font-size: 16px;
+  height: 40px;
+  min-width: 280px;
+  border-radius: 8px;
+  outline: none;
+  padding: 0.5rem;
+}
+
+.custom-search-input::placeholder {
+  color: #6a7683;
+}
+
+.custom-search-input:focus {
+  border: 1px solid #ffffff; /* Tailwind's blue-500 */
+}

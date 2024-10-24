@@ -6,7 +6,7 @@ import FilterActions from "./FilterAction";
 import PdfAction from "./PdfAction";
 
 const SectionMiniHeader = ({
-  handlClick,
+  handlCreate,
   type = "",
   title = "",
   franchisee = false,
@@ -18,12 +18,13 @@ const SectionMiniHeader = ({
           {title}
         </h4>
 
-        {type === "Admin-Franchisee-List" && (
-          <CreateActions openModal={handlClick} />
-        )}
+        {type === "Admin-Franchisee-List" ||
+          (type === "Franchisee-Drivers list" && (
+            <CreateActions openModal={handlCreate} />
+          ))}
         {type === "Admin-Franchisee-One" && <UpdateAction />}
         {type === "Admin-Pharmacies_List" && (
-          <FilterActions franchisee={franchisee} />
+          <FilterActions handleCreate={handlCreate} franchisee={franchisee} />
         )}
         {type === "Admin-Accounts" && <PdfAction />}
       </div>

@@ -6,7 +6,7 @@ import "../src/assets/css/clash-display.css";
 import "../src/assets/css/causten.css";
 import "../src/assets/css/inter.css";
 import { Provider } from "react-redux";
-import store from "./store/store.js";
+import store from "../src/store/Store.js";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

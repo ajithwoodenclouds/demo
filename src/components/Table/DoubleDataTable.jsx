@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import SubBox from "../filtter_box/SubBox";
 import { useNavigate } from "react-router-dom";
 import CustomButton from "../buttons/CustomButton";
+import Tooltip from "../tooltip/Tooltip";
 
 const DoubleDataTable = ({
   data = [],
@@ -139,7 +140,9 @@ const DoubleDataTable = ({
                           key={colIndex}
                           className={`py-[22px] px-[14px] flex text-left flex-col gap-2 text-[14px] border-0`}
                         >
-                          <span>{cellValue[0]}</span>
+                          <div>
+                            <span>{cellValue[0]}</span>
+                          </div>
 
                           <span className={`text-[14px] text-[#6A7683]`}>
                             {cellValue[1]}
@@ -149,10 +152,11 @@ const DoubleDataTable = ({
                       {/* Admin-FranchiseOrderSection End */}
 
                       {/* Admin-Drivers-List */}
-                      {type === "Admin-Drivers-List" && (
+                      {(type === "Admin-Drivers-List") |
+                      (type === "Leave-Request-Section") ? (
                         <td
                           key={colIndex}
-                          className={`py-[22px] px-[14px] items-center gap-3  justify-center flex  text-[14px] border-0`}
+                          className={`py-[22px] px-[14px] items-center gap-3  justify-end flex  text-[14px] border-0`}
                         >
                           <img
                             src={cellValue[0]}
@@ -167,7 +171,7 @@ const DoubleDataTable = ({
                             </span>
                           </div>
                         </td>
-                      )}
+                      ) : null}
                       {/* Admin-Drivers-List End */}
                       {/* Driver-Recent-Activities */}
                       {type === "Driver-Recent-Activities" && (
@@ -240,7 +244,7 @@ const DoubleDataTable = ({
                         link && navigate(`${path}/${item[column.id]}`)
                       }
                       key={colIndex}
-                      className={`py-[22px] px-[14px] text-[14px] ${
+                      className={`py-[22px] px-[14px] max-w-[300px]  text-[14px] ${
                         type === "Admin-FranchiseOrderSection"
                           ? "border-l border-[#F5F7FA] border-r"
                           : "border-0"
@@ -297,6 +301,29 @@ const DoubleDataTable = ({
                   </td>
                 )}
                 {/* Admin-DuesList End */}
+                {/* Leave-Request-Section */}
+                {type === "Leave-Request-Section" && (
+                  <td>
+                    <div className="flex gap-3">
+                      <Tooltip content={"Approve"}>
+                        <img
+                          onClick={() => onRowClick(item, (type = "approved"))}
+                          src="/image/approved_icon.svg"
+                          className="w-10"
+                          alt="image"
+                        />
+                      </Tooltip>
+                      <Tooltip content={"Reject"}>
+                        <img
+                          onClick={() => onRowClick(item, (type = "rejected"))}
+                          src="/image/remove_icon.svg"
+                          className="w-10"
+                          alt="image"
+                        />
+                      </Tooltip>
+                    </div>
+                  </td>
+                )}
               </tr>
 
               {isModalOpen && modalRowIndex === rowIndex && (

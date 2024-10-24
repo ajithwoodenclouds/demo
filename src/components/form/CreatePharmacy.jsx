@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import CustomButton from "../buttons/CustomButton";
 import SearchMapComponent from "../Map/SerachMapComponent";
 
-const CreateFranchisee = ({ closeModal, isOpen }) => {
+const CreatePharmacy = ({ closeModal, isOpen }) => {
   const [step, setStep] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [showModal, setShowModal] = useState(false);
@@ -52,7 +52,7 @@ const CreateFranchisee = ({ closeModal, isOpen }) => {
           <div className="flex gap-3 mb-[30px]">
             <img src="/image/franchisee_icon.svg" alt="icon" />
             <h2 className="text-[#212529] text-[20px] font-[500] font-interSemibold">
-              Create franchisee
+              Create pharmacy
             </h2>
           </div>
 
@@ -102,7 +102,7 @@ const CreateFranchisee = ({ closeModal, isOpen }) => {
                   <input
                     id="phone"
                     type="tel"
-                    placeholder="Enter franchisee phone no"
+                    placeholder="Enter pharmacy phone no"
                     className="w-full border-b-2 placeholder:text-[16px] border-[#C9D2DB] focus:border-blue-500 outline-none"
                   />
                 </div>
@@ -132,7 +132,7 @@ const CreateFranchisee = ({ closeModal, isOpen }) => {
                   <input
                     id="companyRegNo"
                     type="text"
-                    placeholder="Enter company reg no"
+                    placeholder="Select commission percentage"
                     className="w-full border-b-2 placeholder:text-[16px] border-[#C9D2DB] focus:border-blue-500 outline-none"
                   />
                 </div>
@@ -144,27 +144,43 @@ const CreateFranchisee = ({ closeModal, isOpen }) => {
                   >
                     Commission
                   </label>
-                  <input
+                  <select
                     id="commission"
-                    type="text"
-                    placeholder="Enter commission percentage"
-                    className="w-full border-b-2 placeholder:text-[16px] border-[#C9D2DB] focus:border-blue-500 outline-none"
-                  />
+                    className="w-full border-b-2 placeholder:text-[16px] text-[#9ca3b0] border-[#C9D2DB] focus:border-blue-500 outline-none"
+                  >
+                    <option
+                      className="text-[#6A7683]"
+                      value="Select commission percentage"
+                      disabled
+                      selected
+                    >
+                      Select commission percentage
+                    </option>
+                    <option value="5%">5%</option>
+                  </select>
                 </div>
 
                 <div>
                   <label
-                    htmlFor="hst"
+                    htmlFor="commission"
                     className="block font-interRegular mb-[10px] font-[400] text-[16px] text-[#6A7683]"
                   >
-                    HST
+                    Subscription
                   </label>
-                  <input
-                    id="hst"
-                    type="text"
-                    placeholder="Enter HST (in percentage)"
-                    className="w-full border-b-2 placeholder:text-[16px] border-[#C9D2DB] focus:border-blue-500 outline-none"
-                  />
+                  <select
+                    id="commission"
+                    className="w-full border-b-2 placeholder:text-[16px] text-[#9ca3b0] border-[#C9D2DB] focus:border-blue-500 outline-none"
+                  >
+                    <option
+                      className="text-[#6A7683]"
+                      value="Select plan"
+                      disabled
+                      selected
+                    >
+                      Select plan
+                    </option>
+                    <option value="basic">Basic</option>
+                  </select>
                 </div>
               </form>
               <div className="flex mt-[20px] justify-end gap-5">
@@ -198,17 +214,25 @@ const CreateFranchisee = ({ closeModal, isOpen }) => {
                 <div className=" grid grid-cols-2 gap-8">
                   <div>
                     <label
-                      className="block font-interRegular mb-[10px] text-[16px] text-[#6A7683]"
-                      htmlFor="province"
+                      htmlFor="commission"
+                      className="block font-interRegular mb-[10px] font-[400] text-[16px] text-[#6A7683]"
                     >
                       Province
                     </label>
-                    <input
-                      type="text"
-                      id="province"
-                      placeholder="Enter Province"
-                      className="w-full border-b-2 placeholder:text-[16px]  border-[#C9D2DB] focus:border-blue-500 outline-none"
-                    />
+                    <select
+                      id="commission"
+                      className="w-full border-b-2 placeholder:text-[16px] text-[#9ca3b0] border-[#C9D2DB] focus:border-blue-500 outline-none"
+                    >
+                      <option
+                        className="text-[#6A7683]"
+                        value="Select province"
+                        disabled
+                        selected
+                      >
+                        Select province
+                      </option>
+                      <option value="basic">Basic</option>
+                    </select>
                   </div>
 
                   <div>
@@ -372,4 +396,4 @@ const CreateFranchisee = ({ closeModal, isOpen }) => {
   );
 };
 
-export default CreateFranchisee;
+export default CreatePharmacy;

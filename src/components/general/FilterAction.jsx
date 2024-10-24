@@ -1,12 +1,12 @@
 import React from "react";
 
-export default function FilterActions({ openModal, franchisee = flase }) {
+export default function FilterActions({ handleCreate, franchisee = flase }) {
   return (
     <div className="flex items-center gap-4">
       {franchisee && (
         <div
           className="flex items-center gap-2 cursor-pointer"
-          onClick={() => openModal(true)}
+          onClick={() => handleCreate(true)}
         >
           <img src="/image/add_icon.svg" alt="Add Icon" />
           <h3 className="text-[16px] font-interRegular">Create</h3>

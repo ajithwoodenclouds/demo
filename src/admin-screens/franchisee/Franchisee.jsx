@@ -41,7 +41,7 @@ export default function Franchisee() {
           <SectionMiniHeader
             title="Franchisee list"
             type="Admin-Franchisee-List"
-            handlClick={setIsModalOpen}
+            handlCreate={setIsModalOpen}
           />
           <Table
             action={true}
