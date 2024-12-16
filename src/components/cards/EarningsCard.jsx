@@ -8,7 +8,7 @@ const EarningsCard = () => {
 
   return (
     <div
-      className="bg-custom-gradient flex flex-col justify-between text-white w-[370px] rounded-lg p-6 shadow-lg relative h-full"
+      className="bg-custom-gradient flex flex-col justify-between text-white lg:w-[370px] rounded-lg p-6 shadow-lg relative h-full"
       style={{
         backgroundImage:
           "url('/image/card_bg.svg'), linear-gradient(192.82deg, #424953 5.95%, #1C1C1C 94.05%)",

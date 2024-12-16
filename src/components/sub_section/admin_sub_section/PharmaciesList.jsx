@@ -40,6 +40,7 @@ export default function Pharmacies_list() {
           <Table
             head_colors={header_colors}
             data={currentUsers}
+            link={true}
             columns={columns}
             colors={colors}
             type="Admin-Pharmacies-List"

@@ -46,6 +46,7 @@ export default function Franchisee() {
           <Table
             action={true}
             data={currentUsers}
+            link={true}
             columns={columns}
             colors={colors}
             head_colors={head_colors}

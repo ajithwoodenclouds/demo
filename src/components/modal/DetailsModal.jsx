@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 const DetailsModal = ({ isOpen, onClose, data }) => {
   const [showModal, setShowModal] = useState(isOpen);
   const [isAnimating, setIsAnimating] = useState(false);
+  console.log(data, "inside data");
 
   useEffect(() => {
     if (isOpen) {

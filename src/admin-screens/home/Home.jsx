@@ -11,7 +11,7 @@ export default function Home() {
     <div className="bg-[#F5F7FA] w-full">
       <div className="flex w-full justify-between">
         <Sidebar />
-        <div className="w-full">
+        <div className="w-full flex flex-col">
           <Header current="Home" />
           <CustomBoxes data={admin_home_data} />
           <GraphSection />

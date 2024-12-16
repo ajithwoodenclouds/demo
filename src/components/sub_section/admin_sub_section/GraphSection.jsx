@@ -6,7 +6,7 @@ import EarningsCard from "../../cards/EarningsCard";
 export default function GraphSection({ type = "default" }) {
   const [selectedYear, setSelectedYear] = useState("This year");
   return (
-    <div className="flex  justify-between w-full px-4 h-[450px] bg-gray-100 space-x-6 ">
+    <div className="flex  justify-between w-full flex-col lg:flex-row gap-4 px-4 lg:h-[450px]  bg-gray-100  ">
       {/* Both sections now have equal flex-basis and height */}
       {type == "default" && (
         <div className="h-full">

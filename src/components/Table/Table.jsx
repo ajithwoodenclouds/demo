@@ -13,7 +13,7 @@ const Table = ({
   modalComponent: ModalComponent,
   path = "",
   head_colors,
-  link = true,
+  link = false,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState("");

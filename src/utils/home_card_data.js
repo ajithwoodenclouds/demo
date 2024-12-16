@@ -194,6 +194,7 @@ export const pharmaciesOne_franchise_data = [
     image: "/image/due_icon.svg",
     color: false,
     amount_des: "To D2D",
+    text_color1: "text-[#41DD75]",
     amount_des1: "From D2D",
     path: "/pharmacies",
     path_name: "View history",
@@ -204,5 +205,29 @@ export const pharmaciesOne_franchise_data = [
     amount: 2100,
     image: "/image/hospital_icon.svg",
     color: "bg-[#B0E2CD]",
+  },
+];
+
+export const pharmaciesOne_pharmacie_data = [
+  {
+    id: 1,
+    title: "Total paid amount to franchisee",
+    amount: 2100,
+    image: "/image/hospital_icon.svg",
+    color: "bg-[#C0D3F0]",
+  },
+  {
+    id: 2,
+    title: "Due payments",
+    amount: "$397,671",
+    recive_amount: "$76,032",
+    image: "/image/due_icon.svg",
+    color: false,
+    amount_des: "To franchisee",
+    amount_des1: "From franchisee",
+    path: "/history",
+    path_name: "View history",
+    text_color1: "text-[#E6BE1D]",
+    text_color2: "text-[#41DD75]",
   },
 ];

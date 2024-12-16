@@ -6,8 +6,8 @@ import {
 } from "../../../utils/admin-account-generated-invoices";
 import PaginationComponent from "../../pagination/PaginationComponent";
 import DoubleDataTable from "../../Table/DoubleDataTable";
-import DetailsModal from "../../modal/DetailsModal";
 import VerifyPaymentModal from "../../modal/VerifyPaymentModal";
+import InvoiceModal from "../../modal/InvoiceModal";
 
 export default function GeneratedInvoicesSection() {
   const [currentPage, setCurrentPage] = useState(0);
@@ -86,13 +86,14 @@ export default function GeneratedInvoicesSection() {
 
       {/* Include DetailsModal */}
 
-      {isModalOpen && modalData && (
+      {/* {isModalOpen && modalData && (
         <VerifyPaymentModal
           isOpen={isModalOpen}
           data={modalData}
           setIsOpen={setModalOpen}
         />
-      )}
+      )} */}
+      <InvoiceModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
     </div>
   );
 }

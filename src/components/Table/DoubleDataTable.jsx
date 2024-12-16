@@ -11,17 +11,18 @@ const DoubleDataTable = ({
   head_colors = [],
   type = "default",
   onRowClick,
+  handleModal,
   renderSubComponent,
   modalComponent: ModalComponent,
   path = "",
   action = false,
-  link = true,
+  link = false,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState("");
   const [modalTitle, setModalTitle] = useState("");
-  const [modalRowIndex, setModalRowIndex] = useState(null); // Track which row to show modal in
-  const modalRef = useRef(null); // Reference for the modal box
+  const [modalRowIndex, setModalRowIndex] = useState(null);
+  const modalRef = useRef(null);
   const navigate = useNavigate();
 
   // Define conditional classes for the Status column
@@ -30,28 +31,36 @@ const DoubleDataTable = ({
       case "Delivered":
         return "text-[#3AAC43]"; // Green for Delivered
       case "Pending":
-        return "text-[#E69C1D] "; // Yellow for Pending
+      case "Attempted":
+        return "text-[#E69C1D]"; // Yellow for Pending and Attempted
       case "Out for delivery":
-        return "text-[#2080D9]"; // Blue for Out for delivery
+      case "Scheduled":
+        return "text-[#2080D9]"; // Blue for Out for Delivery and Scheduled
+      case "Successful":
+        return "text-[#269149]"; // Green for Successful
+      case "Failed":
+      case "Debit":
+      case "-$847":
+        return "text-[#D14B4B]";
       default:
-        return "text-gray-500"; // Default color
+        return ""; // Default class if no match found
     }
   };
 
   // Handle row click and pass modal opening as callback
-  // const handleActionClick = (item, rowIndex) => {
-  //   onRowClick?.(item, rowIndex, {
-  //     openModal: (content, title) => {
-  //       setModalTitle(title || `Details for ${item.Sno}`);
-  //       setModalContent(
-  //         content ||
-  //           `Details for ${item.Sno}: ${item["Franchisee Name"]}, Total Orders: ${item["Total Orders"]}`
-  //       );
-  //       setModalRowIndex(rowIndex); // Set the row index for displaying the modal
-  //       setIsModalOpen(true);
-  //     },
-  //   });
-  // };
+  const handleActionClick = (item, rowIndex) => {
+    onRowClick?.(item, rowIndex, {
+      openModal: (content, title) => {
+        setModalTitle(title || `Details for ${item.Sno}`);
+        setModalContent(
+          content ||
+            `Details for ${item.Sno}: ${item["Franchisee Name"]}, Total Orders: ${item["Total Orders"]}`
+        );
+        setModalRowIndex(rowIndex); // Set the row index for displaying the modal
+        setIsModalOpen(true);
+      },
+    });
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -113,6 +122,7 @@ const DoubleDataTable = ({
               >
                 {columns.map((column, colIndex) => {
                   const cellValue = item[column.accessor];
+                  console.log(cellValue);
 
                   return Array.isArray(cellValue) ? (
                     <div>
@@ -153,10 +163,12 @@ const DoubleDataTable = ({
 
                       {/* Admin-Drivers-List */}
                       {(type === "Admin-Drivers-List") |
-                      (type === "Leave-Request-Section") ? (
+                      (type === "Leave-Request-Section") |
+                      (type === "Pharmcy-Orders-List") ? (
                         <td
                           key={colIndex}
                           className={`py-[22px] px-[14px] items-center gap-3  justify-end flex  text-[14px] border-0`}
+                          onClick={() => handleModal(item)}
                         >
                           <img
                             src={cellValue[0]}
@@ -241,7 +253,9 @@ const DoubleDataTable = ({
                   ) : (
                     <td
                       onClick={() =>
-                        link && navigate(`${path}/${item[column.id]}`)
+                        link
+                          ? navigate(`${path}/${item[column.id]}`)
+                          : handleModal(item)
                       }
                       key={colIndex}
                       className={`py-[22px] px-[14px] max-w-[300px]  text-[14px] ${
@@ -257,9 +271,18 @@ const DoubleDataTable = ({
                           alt={`Image at ${cellValue}`}
                           className="w-10 h-10 object-cover"
                         />
-                      ) : column.accessor === "Status" ? (
+                      ) : (column.accessor === "Status") |
+                        (column.accessor == "type") |
+                        (column.accessor == "paid_amount") ? (
                         <span className={getStatusClass(cellValue)}>
-                          {cellValue}
+                          {cellValue == "Failed" ? (
+                            <div className="flex items-center justify-center gap-3">
+                              <span> {cellValue}</span>
+                              <img src="/image/failed_icon.svg" alt="icon" />
+                            </div>
+                          ) : (
+                            <span>{cellValue}</span>
+                          )}
                         </span>
                       ) : (
                         cellValue
@@ -324,6 +347,14 @@ const DoubleDataTable = ({
                     </div>
                   </td>
                 )}
+                {type === "Pharmcy-Orders-List" ? (
+                  <td
+                    onClick={() => handleActionClick(item, rowIndex)}
+                    className={`py-[22px] px-[16px] items-center justify-center flex text-[14px]`}
+                  >
+                    <img src="/image/option_icon.svg" alt="icon" />
+                  </td>
+                ) : null}
               </tr>
 
               {isModalOpen && modalRowIndex === rowIndex && (

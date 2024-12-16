@@ -10,7 +10,7 @@ export default function CustomBoxes({
   const navigate = useNavigate();
   const style_deafut = {
     backgroundSize: "30%",
-    backgroundPosition: "100% -100px",
+    backgroundPosition: "100% -90px",
   };
 
   return (
@@ -30,15 +30,15 @@ export default function CustomBoxes({
                   ? {
                       backgroundImage:
                         "url('/image/card_bg.svg'), linear-gradient(192.82deg, #424953 5.95%, #1C1C1C 94.05%)",
-                      backgroundSize: "50%, cover", // Use cover for both layers or adjust accordingly
-                      backgroundPosition: "100% 203%, center", // Set positions for each background
+                      backgroundSize: "30%, cover", // Use cover for both layers or adjust accordingly
+                      backgroundPosition: "100% -90px, center", // Set positions for each background
                       backgroundRepeat: "no-repeat, no-repeat",
                     }
-                  : (style == "double") | !item.color
+                  : style == "double"
                   ? style_deafut
                   : (style = {
-                      backgroundSize: "50%, cover", // Use cover for both layers or adjust accordingly
-                      backgroundPosition: "100% 203%, center", // Set positions for each background
+                      backgroundSize: "30%, cover", // Use cover for both layers or adjust accordingly
+                      backgroundPosition: "100% -65px, center", // Set positions for each background
                       backgroundRepeat: "no-repeat, no-repeat",
                     })
               }
@@ -57,7 +57,13 @@ export default function CustomBoxes({
                 <div>
                   <h3
                     className={`text-[24px] font-interSemibold ${
-                      !item.color ? " text-[#41DD75]" : "text-[#1C1C1C]"
+                      !item.color
+                        ? `${
+                            item.text_color1
+                              ? item.text_color1
+                              : item.text_color2
+                          }`
+                        : "text-[#1C1C1C]"
                     } `}
                   >
                     {item.amount}

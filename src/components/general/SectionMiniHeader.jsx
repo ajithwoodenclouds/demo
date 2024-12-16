@@ -10,6 +10,7 @@ const SectionMiniHeader = ({
   type = "",
   title = "",
   franchisee = false,
+  placeHolder,
 }) => {
   return (
     <div className="container px-4 pt-4 mx-auto">
@@ -24,9 +25,29 @@ const SectionMiniHeader = ({
           ))}
         {type === "Admin-Franchisee-One" && <UpdateAction />}
         {type === "Admin-Pharmacies_List" && (
-          <FilterActions handleCreate={handlCreate} franchisee={franchisee} />
+          <FilterActions
+            handleCreate={handlCreate}
+            franchisee={franchisee}
+            placeholder={placeHolder}
+          />
         )}
         {type === "Admin-Accounts" && <PdfAction />}
+        {type === "Customers_List" && (
+          <div className="flex items-center space-x-2">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder={placeHolder}
+                className="border border-[#1C1C1C66] rounded-lg py-2 pl-10 pr-4 focus:outline-none"
+              />
+              <img
+                src="/image/search_icon.svg"
+                className="absolute left-3 top-1/2 transform -translate-y-1/2"
+                alt="Search Icon"
+              />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

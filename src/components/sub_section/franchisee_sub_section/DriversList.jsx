@@ -46,6 +46,7 @@ export default function DriversList() {
             data={currentUsers}
             columns={columns}
             colors={colors}
+            link={true}
             type="Admin-Drivers-List"
             path="/drivers"
           />

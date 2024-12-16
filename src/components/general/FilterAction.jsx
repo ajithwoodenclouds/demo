@@ -1,6 +1,10 @@
 import React from "react";
 
-export default function FilterActions({ handleCreate, franchisee = flase }) {
+export default function FilterActions({
+  handleCreate,
+  franchisee = flase,
+  placeholder = "",
+}) {
   return (
     <div className="flex items-center gap-4">
       {franchisee && (
@@ -17,7 +21,7 @@ export default function FilterActions({ handleCreate, franchisee = flase }) {
         <div className="relative">
           <input
             type="text"
-            placeholder="Search pharmacies"
+            placeholder={placeholder}
             className="border border-[#1C1C1C66] rounded-lg py-2 pl-10 pr-4 focus:outline-none"
           />
           <img
@@ -27,6 +31,7 @@ export default function FilterActions({ handleCreate, franchisee = flase }) {
           />
         </div>
       </div>
+
       <div
         className="flex items-center gap-2 cursor-pointer"
         onClick={() => openModal(true)}
