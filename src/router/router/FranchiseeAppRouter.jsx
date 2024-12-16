@@ -15,7 +15,7 @@ import LeaveRequestSection from "../../components/sub_section/franchisee_sub_sec
 const FranchiseeAppRouter = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/*" element={<Home />} />
       <Route path="/history" element={<TransactionHistorySection />} />
       <Route path="/orders" element={<Orders />} />
       <Route path="/pharmacies" element={<Pharmacies />} />
